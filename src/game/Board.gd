@@ -2,7 +2,7 @@ extends Control
 
 export var size = 4
 export var tile_size = 80
-export var tile_scene: PackedScene = preload("res://src/board/Tile.tscn")
+export var tile_scene: PackedScene = preload("res://src/game/Tile.tscn")
 export var slide_duration = 0.2
 
 var board = []

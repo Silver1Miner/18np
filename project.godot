@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RichTextEffect",
+"class": "RichTextPulse",
+"language": "GDScript",
+"path": "res://src/ui/pulse.gd"
+} ]
+_global_script_class_icons={
+"RichTextPulse": ""
+}
+
 [application]
 
 config/name="NP-Hard"
