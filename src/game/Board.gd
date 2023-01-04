@@ -277,7 +277,8 @@ func set_tile_numbers(state: bool) -> void:
 func update_size(new_size: int) -> void:
 	size = int(new_size)
 	print("updating board size ", size)
-	tile_size = floor(get_size().x/size)
+	#tile_size = floor(get_size().x/size)
+	tile_size = get_size().x/size
 	for tile in tiles:
 		tile.queue_free()
 	tiles = []

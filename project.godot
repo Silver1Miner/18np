@@ -21,6 +21,8 @@ _global_script_class_icons={
 [application]
 
 config/name="NP-Hard"
+run/main_scene="res://src/Main.tscn"
+boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
 
 [autoload]

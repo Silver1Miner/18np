@@ -10,13 +10,13 @@ func set_number(new_number: int) -> void:
 	number = new_number
 	$Label.text = str(number)
 
-func set_sprite(new_frame, size, tile_size) -> void:
+func set_sprite(new_frame: int, size: int, tile_size: float) -> void:
 	update_size(size, tile_size)
 	$Sprite.set_hframes(size)
 	$Sprite.set_vframes(size)
 	$Sprite.set_frame(new_frame)
 
-func update_size(size, tile_size) -> void:
+func update_size(size: int, tile_size: float) -> void:
 	var new_size = Vector2(tile_size, tile_size)
 	set_size(new_size)
 	$Label.set_size(new_size)

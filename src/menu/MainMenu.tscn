@@ -1,29 +1,110 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/ui/SelectBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/gui/Theme.tres" type="Theme" id=2]
+[ext_resource path="res://src/menu/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://src/ui/SizeSelect.tscn" type="PackedScene" id=4]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Panes" type="HBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 60.0
+margin_right = 1800.0
+margin_bottom = 580.0
+custom_constants/separation = 0
 
-[node name="Control" type="Control" parent="Panes"]
+[node name="Store" type="Control" parent="Panes"]
 margin_right = 360.0
-margin_bottom = 640.0
-rect_min_size = Vector2( 360, 640 )
+margin_bottom = 520.0
+rect_min_size = Vector2( 360, 520 )
+
+[node name="Label" type="Label" parent="Panes/Store"]
+margin_right = 360.0
+margin_bottom = 40.0
+text = "STORE"
+align = 1
+valign = 1
+
+[node name="Training" type="Control" parent="Panes"]
+margin_left = 360.0
+margin_right = 720.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 360, 520 )
+
+[node name="Label2" type="Label" parent="Panes/Training"]
+margin_right = 360.0
+margin_bottom = 40.0
+text = "TRAINING"
+align = 1
+valign = 1
+
+[node name="SizeSelect" parent="Panes/Training" instance=ExtResource( 4 )]
+margin_top = -187.0
+margin_bottom = 187.0
+
+[node name="Daily" type="Control" parent="Panes"]
+margin_left = 720.0
+margin_right = 1080.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 360, 520 )
+
+[node name="Label3" type="Label" parent="Panes/Daily"]
+margin_right = 360.0
+margin_bottom = 40.0
+text = "DAILY CHALLENGE"
+align = 1
+valign = 1
+
+[node name="PlayDaily" type="Button" parent="Panes/Daily"]
+margin_left = 80.0
+margin_top = 420.0
+margin_right = 280.0
+margin_bottom = 480.0
+text = "Play!"
+
+[node name="Records" type="Control" parent="Panes"]
+margin_left = 1080.0
+margin_right = 1440.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 360, 520 )
+
+[node name="Label4" type="Label" parent="Panes/Records"]
+margin_right = 360.0
+margin_bottom = 40.0
+text = "RECORDS"
+align = 1
+valign = 1
+
+[node name="Gallery" type="Control" parent="Panes"]
+margin_left = 1440.0
+margin_right = 1800.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 360, 520 )
+
+[node name="Label5" type="Label" parent="Panes/Gallery"]
+margin_right = 360.0
+margin_bottom = 40.0
+text = "GALLERY"
+align = 1
+valign = 1
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="Overlay"]
-margin_right = 40.0
-margin_bottom = 40.0
+visible = false
+margin_right = 360.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 360, 60 )
 theme = ExtResource( 2 )
 
 [node name="SelectBar" parent="Overlay" instance=ExtResource( 1 )]
+
+[connection signal="size_selected" from="Panes/Training/SizeSelect" to="." method="_on_SizeSelect_size_selected"]
+[connection signal="pressed" from="Panes/Daily/PlayDaily" to="." method="_on_PlayDaily_pressed"]
+[connection signal="selected" from="Overlay/SelectBar" to="." method="_on_SelectBar_selected"]
