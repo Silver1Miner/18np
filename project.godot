@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Audio="*res://src/audio/Audio.tscn"
+Daily="*res://src/daily/Daily.tscn"
 
 [display]
 

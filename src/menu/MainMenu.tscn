@@ -68,6 +68,15 @@ margin_right = 280.0
 margin_bottom = 480.0
 text = "Play!"
 
+[node name="Disclaimer" type="Label" parent="Panes/Daily"]
+margin_top = 100.0
+margin_right = 360.0
+margin_bottom = 300.0
+text = "\"The silverware is unpolished because the house is on fire\""
+align = 1
+valign = 1
+autowrap = true
+
 [node name="Records" type="Control" parent="Panes"]
 margin_left = 1080.0
 margin_right = 1440.0

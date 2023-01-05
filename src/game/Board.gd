@@ -6,7 +6,10 @@ export var tile_scene: PackedScene = preload("res://src/game/Tile.tscn")
 export var slide_duration = 0.2
 
 var board = []
+var board_flat = []
 var tiles = []
+var consistent = false
+var seed_value = 0
 var empty = Vector2()
 var is_animating = false
 var tiles_animating = 0
@@ -147,6 +150,8 @@ func generate_board() -> void:
 				tile.set_number(value)
 				if background_texture:
 					tile.set_sprite_texture(background_texture)
+				else:
+					background_texture = tile.get_sprite_texture()
 				tile.set_sprite(value-1, size, tile_size)
 				tile.set_number_visible(number_visible)
 				tile.connect("tile_pressed", self, "_on_Tile_pressed")
@@ -191,13 +196,25 @@ func scramble_board() -> void:
 	var temp_flat_board = []
 	for i in range(size * size -1 , -1, -1):
 		temp_flat_board.append(i)
-	randomize()
+	if consistent:
+		seed(seed_value)
+	else:
+		randomize()
 	temp_flat_board.shuffle()
 	var is_solvable = is_board_solvable(temp_flat_board)
+	var i = 0
 	while not is_solvable:
-		randomize()
+		if consistent:
+			seed(seed_value+i)
+		else:
+			randomize()
 		temp_flat_board.shuffle()
 		is_solvable = is_board_solvable(temp_flat_board)
+		i += 1
+		print(i)
+		if i > 1000:
+			push_error("failed to generate solvable board")
+			break
 	for r in range(size):
 		for c in range(size):
 			board[r][c] = temp_flat_board[r*size + c]
@@ -205,8 +222,10 @@ func scramble_board() -> void:
 				set_tile_position(r, c, board[r][c])
 	empty = value_to_grid(0)
 	game_state = GAME_STATES.STARTED
+	board_flat = temp_flat_board.duplicate(true)
 
 func reset_board() -> void:
+	game_state = GAME_STATES.READY
 	reset_move_count()
 	board = []
 	for r in range(size):

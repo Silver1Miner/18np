@@ -27,6 +27,9 @@ func update_size(size: int, tile_size: float) -> void:
 func set_sprite_texture(texture) -> void:
 	$Sprite.set_texture(texture)
 
+func get_sprite_texture():
+	return $Sprite.get_texture()
+
 func slide_to(new_position, duration) -> void:
 	tween.interpolate_property(self, "rect_position", null, new_position, duration,
 	Tween.TRANS_QUART, Tween.EASE_OUT)
