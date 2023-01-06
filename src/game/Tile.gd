@@ -23,6 +23,8 @@ func update_size(size: int, tile_size: float) -> void:
 	$Panel.set_size(new_size)
 	var to_scale = size * (new_size/$Sprite.texture.get_size())
 	$Sprite.set_scale(to_scale)
+	$Sprite.offset.x = -to_scale.x
+	$Sprite.offset.y = -to_scale.y
 
 func set_sprite_texture(texture) -> void:
 	$Sprite.set_texture(texture)

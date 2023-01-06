@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Store" type="Control"]
+margin_right = 360.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 360, 520 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 360.0
+margin_bottom = 240.0
+text = "STORE
+
+COMING SOON
+
+Earn points from
+the daily challenge
+to unlock additional gallery
+images and jukebox music"
+align = 1
+valign = 1
+autowrap = true

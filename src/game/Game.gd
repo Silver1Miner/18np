@@ -2,8 +2,11 @@ extends Control
 
 signal back()
 signal challenge_completed(board_flat, seconds, minutes, moves)
+onready var title = $Complete/Display/Title
 onready var timer = $Timer
 onready var board = $GameView/BoardView/Board
+onready var clock_tab = $GameView/Top/Display/Status/Clock
+onready var moves_tab = $GameView/Top/Display/Status/Moves
 onready var clock_display = $GameView/Top/Display/Status/Clock/Value
 onready var moves_display = $GameView/Top/Display/Status/Moves/Value
 onready var anim = $AnimationPlayer
@@ -30,6 +33,14 @@ func set_challenge(value: bool) -> void:
 	challenge = value
 	board.consistent = challenge
 	board.seed_value = Daily.get_daily_seed()
+	if challenge:
+		clock_tab.visible = true
+		moves_tab.visible = true
+	else:
+		clock_tab.visible = !UserSettings.hide_times
+		moves_tab.visible = !UserSettings.hide_moves
+	board.update_background_texture(UserData.pictures[UserSettings.picture_index][1])
+	title.text = UserData.pictures[UserSettings.picture_index][0]
 
 func reset_game(size: int) -> void:
 	board.update_size(size)

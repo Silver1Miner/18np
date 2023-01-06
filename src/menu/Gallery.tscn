@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/gui/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/menu/Gallery.gd" type="Script" id=2]
+
+[node name="Gallery" type="Control"]
+margin_right = 360.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 360, 520 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Options" type="VBoxContainer" parent="."]
+margin_right = 360.0
+margin_bottom = 480.0
+custom_constants/separation = 0
+
+[node name="Jukebox" type="HBoxContainer" parent="Options"]
+margin_right = 360.0
+margin_bottom = 40.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="Options/Jukebox"]
+margin_right = 120.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 120, 40 )
+text = "Jukebox"
+align = 1
+valign = 1
+
+[node name="JukeboxSelect" type="OptionButton" parent="Options/Jukebox"]
+margin_left = 120.0
+margin_right = 360.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 240, 40 )
+
+[node name="Label5" type="Label" parent="Options"]
+margin_top = 40.0
+margin_right = 360.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 80 )
+text = "GALLERY"
+align = 1
+valign = 2
+
+[node name="Pictures" type="ItemList" parent="Options"]
+margin_top = 120.0
+margin_right = 360.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 0, 360 )
+
+[node name="Preview" type="Panel" parent="."]
+margin_right = 360.0
+margin_bottom = 520.0
+
+[node name="PreviewPic" type="TextureRect" parent="Preview"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 340.0
+margin_bottom = 340.0
+expand = true
+
+[node name="Set" type="Button" parent="Preview"]
+margin_left = 40.0
+margin_top = 360.0
+margin_right = 320.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 280, 40 )
+text = "Set as Background"
+
+[node name="Close" type="Button" parent="Preview"]
+margin_left = 40.0
+margin_top = 420.0
+margin_right = 320.0
+margin_bottom = 460.0
+rect_min_size = Vector2( 280, 40 )
+text = "Close"
+
+[connection signal="item_selected" from="Options/Jukebox/JukeboxSelect" to="." method="_on_JukeboxSelect_item_selected"]
+[connection signal="item_selected" from="Options/Pictures" to="." method="_on_Pictures_item_selected"]
+[connection signal="pressed" from="Preview/Set" to="." method="_on_Set_pressed"]
+[connection signal="pressed" from="Preview/Close" to="." method="_on_Close_pressed"]

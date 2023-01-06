@@ -29,6 +29,8 @@ config/icon="res://icon.png"
 
 Audio="*res://src/audio/Audio.tscn"
 Daily="*res://src/daily/Daily.tscn"
+UserData="*res://src/user/UserData.tscn"
+UserSettings="*res://src/user/UserSettings.tscn"
 
 [display]
 

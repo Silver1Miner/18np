@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/ui/SelectBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/gui/Theme.tres" type="Theme" id=2]
 [ext_resource path="res://src/menu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://src/ui/SizeSelect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/menu/Store.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/menu/Gallery.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/gui/buttons/gear.png" type="Texture" id=7]
+[ext_resource path="res://src/menu/Settings.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/gui/buttons/flatLight33.png" type="Texture" id=9]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -19,17 +24,7 @@ margin_right = 1800.0
 margin_bottom = 580.0
 custom_constants/separation = 0
 
-[node name="Store" type="Control" parent="Panes"]
-margin_right = 360.0
-margin_bottom = 520.0
-rect_min_size = Vector2( 360, 520 )
-
-[node name="Label" type="Label" parent="Panes/Store"]
-margin_right = 360.0
-margin_bottom = 40.0
-text = "STORE"
-align = 1
-valign = 1
+[node name="Store" parent="Panes" instance=ExtResource( 5 )]
 
 [node name="Training" type="Control" parent="Panes"]
 margin_left = 360.0
@@ -85,35 +80,46 @@ rect_min_size = Vector2( 360, 520 )
 
 [node name="Label4" type="Label" parent="Panes/Records"]
 margin_right = 360.0
-margin_bottom = 40.0
-text = "RECORDS"
+margin_bottom = 189.0
+text = "RECORDS
+
+COMING SOON
+
+See your records of past daily challenge results"
 align = 1
 valign = 1
+autowrap = true
 
-[node name="Gallery" type="Control" parent="Panes"]
+[node name="Gallery" parent="Panes" instance=ExtResource( 6 )]
 margin_left = 1440.0
 margin_right = 1800.0
-margin_bottom = 520.0
-rect_min_size = Vector2( 360, 520 )
-
-[node name="Label5" type="Label" parent="Panes/Gallery"]
-margin_right = 360.0
-margin_bottom = 40.0
-text = "GALLERY"
-align = 1
-valign = 1
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="Overlay"]
-visible = false
 margin_right = 360.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 360, 60 )
 theme = ExtResource( 2 )
 
+[node name="SettingsButton" type="TextureButton" parent="Overlay/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+texture_disabled = ExtResource( 9 )
+expand = true
+
+[node name="Settings" parent="Overlay/Panel" instance=ExtResource( 8 )]
+visible = false
+
 [node name="SelectBar" parent="Overlay" instance=ExtResource( 1 )]
 
 [connection signal="size_selected" from="Panes/Training/SizeSelect" to="." method="_on_SizeSelect_size_selected"]
 [connection signal="pressed" from="Panes/Daily/PlayDaily" to="." method="_on_PlayDaily_pressed"]
+[connection signal="toggled" from="Overlay/Panel/SettingsButton" to="." method="_on_SettingsButton_toggled"]
 [connection signal="selected" from="Overlay/SelectBar" to="." method="_on_SelectBar_selected"]
