@@ -106,45 +106,45 @@ expand = true
 [node name="Status" type="HBoxContainer" parent="GameView/Top/Display"]
 margin_top = 64.0
 margin_right = 360.0
-margin_bottom = 126.0
+margin_bottom = 112.0
 custom_constants/separation = 20
 alignment = 1
 
 [node name="Clock" type="VBoxContainer" parent="GameView/Top/Display/Status"]
 margin_left = 50.0
 margin_right = 170.0
-margin_bottom = 62.0
+margin_bottom = 48.0
 
 [node name="Text" type="Label" parent="GameView/Top/Display/Status/Clock"]
 margin_right = 120.0
-margin_bottom = 29.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 120, 0 )
 text = "Time"
 align = 1
 
 [node name="Value" type="Label" parent="GameView/Top/Display/Status/Clock"]
-margin_top = 33.0
+margin_top = 26.0
 margin_right = 120.0
-margin_bottom = 62.0
+margin_bottom = 48.0
 text = "00:00"
 align = 1
 
 [node name="Moves" type="VBoxContainer" parent="GameView/Top/Display/Status"]
 margin_left = 190.0
 margin_right = 310.0
-margin_bottom = 62.0
+margin_bottom = 48.0
 
 [node name="Text" type="Label" parent="GameView/Top/Display/Status/Moves"]
 margin_right = 120.0
-margin_bottom = 29.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 120, 0 )
 text = "Moves"
 align = 1
 
 [node name="Value" type="Label" parent="GameView/Top/Display/Status/Moves"]
-margin_top = 33.0
+margin_top = 26.0
 margin_right = 120.0
-margin_bottom = 62.0
+margin_bottom = 48.0
 text = "0"
 align = 1
 
@@ -170,6 +170,19 @@ margin_top = -160.0
 margin_right = 160.0
 margin_bottom = 160.0
 
+[node name="Instructions" type="ColorRect" parent="GameView/BoardView"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Label" type="Label" parent="GameView/BoardView/Instructions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Tap to Start"
+align = 1
+valign = 1
+
 [node name="Panel" type="Panel" parent="GameView"]
 margin_top = 500.0
 margin_right = 360.0
@@ -177,6 +190,7 @@ margin_bottom = 640.0
 rect_min_size = Vector2( 0, 140 )
 
 [node name="Cheat" type="Button" parent="GameView/Panel"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -219,45 +233,45 @@ expand = true
 [node name="Status" type="HBoxContainer" parent="Complete/Display"]
 margin_top = 468.0
 margin_right = 320.0
-margin_bottom = 530.0
+margin_bottom = 516.0
 custom_constants/separation = 20
 alignment = 1
 
 [node name="Clock" type="VBoxContainer" parent="Complete/Display/Status"]
 margin_left = 30.0
 margin_right = 150.0
-margin_bottom = 62.0
+margin_bottom = 48.0
 
 [node name="Text" type="Label" parent="Complete/Display/Status/Clock"]
 margin_right = 120.0
-margin_bottom = 29.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 120, 0 )
 text = "Time"
 align = 1
 
 [node name="Value" type="Label" parent="Complete/Display/Status/Clock"]
-margin_top = 33.0
+margin_top = 26.0
 margin_right = 120.0
-margin_bottom = 62.0
+margin_bottom = 48.0
 text = "00:00"
 align = 1
 
 [node name="Moves" type="VBoxContainer" parent="Complete/Display/Status"]
 margin_left = 170.0
 margin_right = 290.0
-margin_bottom = 62.0
+margin_bottom = 48.0
 
 [node name="Text" type="Label" parent="Complete/Display/Status/Moves"]
 margin_right = 120.0
-margin_bottom = 29.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 120, 0 )
 text = "Moves"
 align = 1
 
 [node name="Value" type="Label" parent="Complete/Display/Status/Moves"]
-margin_top = 33.0
+margin_top = 26.0
 margin_right = 120.0
-margin_bottom = 62.0
+margin_bottom = 48.0
 text = "0"
 align = 1
 

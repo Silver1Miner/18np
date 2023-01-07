@@ -23,6 +23,7 @@ func _on_MainMenu_to_daily_challenge() -> void:
 
 func _on_Game_back() -> void:
 	game.visible = false
+	menu.check_daily()
 	menu.visible = true
 	hud.visible = true
 

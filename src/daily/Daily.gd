@@ -33,19 +33,24 @@ func on_challenge_completed(board_flat: Array, seconds: int, minutes: int, moves
 	last_day_check = get_daily_seed()
 	today_challenge_completed = true
 
-var csv = []
-var headers = []
-var csv_noheaders  = []
-var some_header_idx = 0
-func parse_csv(file_name: String):
-	var file = File.new()
-	file.open(file_name, file.READ)
-	while !file.eof_reached():
-		var csv_rows = file.get_csv_line(",") # deliminator
-		csv.append(csv_rows)
-	file.close()
-	csv.pop_back() #remove last empty array get_csv_line() has created 
-	headers = Array(csv[0])
-	some_header_idx = headers.find("some_header_name")
-	csv_noheaders = csv
-	csv_noheaders.pop_front() #remove first array (headers) from the csv
+
+func save_records() -> void:
+	print("attempting to save records")
+	var records = File.new()
+	records.open("user://records.save", File.WRITE)
+	var records_dict = {
+	}
+	print(records_dict)
+	records.store_line(to_json(records_dict))
+	records.close()
+
+func load_records() -> void:
+	print("attemting to load records")
+	var records = File.new()
+	if not records.file_exists("user://records.save"):
+		print("no records file found")
+		return
+	records.open("user://records.save", File.READ)
+	var sd = parse_json(records.get_line())
+	print(sd)
+	records.close()

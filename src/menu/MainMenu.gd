@@ -6,9 +6,23 @@ onready var tween = $Tween
 onready var panes = $Panes
 onready var settings_button = $Overlay/Panel/SettingsButton
 onready var settings_menu = $Overlay/Panel/Settings
+onready var play_daily_button = $Panes/Daily/PlayDaily
+onready var completed_message = $Panes/Daily/Completed
 
 func _ready() -> void:
+	check_daily()
 	panes.rect_position.x = 2 * -360
+
+func check_daily() -> void:
+	Daily.check_day()
+	if Daily.today_challenge_completed:
+		play_daily_button.disabled = true
+		play_daily_button.text = "Completed!"
+		completed_message.visible = true
+	else:
+		play_daily_button.disabled = false
+		play_daily_button.text = "Play!"
+		completed_message.visible = false
 
 func _on_SelectBar_selected(current_select) -> void:
 	if settings_button:

@@ -9,20 +9,46 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Calendar",
+"language": "GDScript",
+"path": "res://src/ui/calendar/calendar.gd"
+}, {
+"base": "Reference",
+"class": "CalendarButtons",
+"language": "GDScript",
+"path": "res://addons/calendar_button/scripts/calendar_buttons.gd"
+}, {
+"base": "Reference",
+"class": "Date",
+"language": "GDScript",
+"path": "res://src/ui/calendar/date.gd"
+}, {
 "base": "RichTextEffect",
 "class": "RichTextPulse",
 "language": "GDScript",
 "path": "res://src/ui/pulse.gd"
+}, {
+"base": "Reference",
+"class": "WindowRestrictor",
+"language": "GDScript",
+"path": "res://addons/calendar_button/scripts/window_restrictor.gd"
 } ]
 _global_script_class_icons={
-"RichTextPulse": ""
+"Calendar": "",
+"CalendarButtons": "",
+"Date": "",
+"RichTextPulse": "",
+"WindowRestrictor": ""
 }
 
 [application]
 
-config/name="NP-Hard"
+config/name="NPuzzle"
+config/description="Sliding puzzle fun"
 run/main_scene="res://src/Main.tscn"
 boot_splash/image="res://icon.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -41,6 +67,10 @@ window/size/test_height=640
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/calendar_button/plugin.cfg" )
 
 [gui]
 

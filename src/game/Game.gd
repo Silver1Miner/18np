@@ -4,6 +4,7 @@ signal back()
 signal challenge_completed(board_flat, seconds, minutes, moves)
 onready var title = $Complete/Display/Title
 onready var timer = $Timer
+onready var instructions = $GameView/BoardView/Instructions
 onready var board = $GameView/BoardView/Board
 onready var clock_tab = $GameView/Top/Display/Status/Clock
 onready var moves_tab = $GameView/Top/Display/Status/Moves
@@ -41,12 +42,19 @@ func set_challenge(value: bool) -> void:
 		moves_tab.visible = !UserSettings.hide_moves
 	board.update_background_texture(UserData.pictures[UserSettings.picture_index][1])
 	title.text = UserData.pictures[UserSettings.picture_index][0]
+	seconds = 0
+	minutes = 0 
+	moves = 0
+	clock_display.text = "00:00"
+	moves_display.text = "0"
+	instructions.visible = true
 
 func reset_game(size: int) -> void:
 	board.update_size(size)
 
 func _on_Board_game_started() -> void:
 	timer.paused = false
+	instructions.visible = false
 	timer.start(1)
 	seconds = 0
 	minutes = 0
@@ -110,6 +118,7 @@ func _on_Restart_pressed() -> void:
 	moves = 0
 	clock_display.text = "00:00"
 	moves_display.text = "0"
+	instructions.visible = true
 
 func _on_Cheat_pressed() -> void:
 	board.auto_win()
