@@ -44,28 +44,28 @@ func get_weekday_name(day : int, month : int, year : int) -> String:
 func get_month_name(month : int) -> String:
 	return MONTH_NAME[month - 1]
 
-func hour() -> int:
+func get_hour() -> int:
 	return OS.get_datetime()["hour"]
 
-func minute() -> int:
+func get_minute() -> int:
 	return OS.get_datetime()["minute"]
 
-func second() -> int:
+func get_second() -> int:
 	return OS.get_datetime()["second"]
 
-func day() -> int:
+func get_day() -> int:
 	return OS.get_datetime()["day"]
 
-func weekday() -> int:
+func get_current_weekday() -> int:
 	return OS.get_datetime()["weekday"]
 
-func month() -> int:
+func get_month() -> int:
 	return OS.get_datetime()["month"]
 
-func year() -> int:
+func get_year() -> int:
 	return OS.get_datetime()["year"]
 
-func daylight_savings_time() -> int:
+func get_daylight_savings_time() -> int:
 	return dst()
 
 func dst() -> int:

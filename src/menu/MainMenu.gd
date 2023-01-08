@@ -42,3 +42,9 @@ func _on_PlayDaily_pressed() -> void:
 func _on_SettingsButton_toggled(button_pressed: bool) -> void:
 	UserSettings.save_settings()
 	settings_menu.visible = button_pressed
+
+func _on_Gems_pressed() -> void:
+	_on_SelectBar_selected(0)
+
+func _on_Streak_pressed() -> void:
+	_on_SelectBar_selected(3)
