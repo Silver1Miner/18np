@@ -1,21 +1,145 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/gui/Theme.tres" type="Theme" id=1]
 
 [node name="Store" type="Control"]
 margin_right = 360.0
 margin_bottom = 520.0
 rect_min_size = Vector2( 360, 520 )
+theme = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
 margin_right = 360.0
-margin_bottom = 240.0
-text = "STORE
-
-COMING SOON
-
-Earn points from
-the daily challenge
-to unlock additional gallery
-images and jukebox music"
+margin_bottom = 40.0
+text = "STORE"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 20.0
+margin_top = 40.0
+margin_right = 340.0
+margin_bottom = 500.0
+
+[node name="StoreOptions" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 320.0
+margin_bottom = 760.0
+mouse_filter = 2
+custom_constants/separation = 20
+
+[node name="Pictures" type="Panel" parent="ScrollContainer/StoreOptions"]
+margin_right = 320.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 320, 200 )
+mouse_filter = 2
+
+[node name="PictureOptions" type="VBoxContainer" parent="ScrollContainer/StoreOptions/Pictures"]
+margin_left = 20.0
+margin_right = 300.0
+margin_bottom = 200.0
+
+[node name="Music" type="Panel" parent="ScrollContainer/StoreOptions"]
+margin_top = 220.0
+margin_right = 320.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 320, 200 )
+mouse_filter = 2
+
+[node name="MusicOptions" type="VBoxContainer" parent="ScrollContainer/StoreOptions/Music"]
+margin_left = 20.0
+margin_right = 300.0
+margin_bottom = 200.0
+
+[node name="Support" type="Panel" parent="ScrollContainer/StoreOptions"]
+margin_top = 440.0
+margin_right = 320.0
+margin_bottom = 760.0
+rect_min_size = Vector2( 320, 320 )
+mouse_filter = 2
+
+[node name="SupportOptions" type="VBoxContainer" parent="ScrollContainer/StoreOptions/Support"]
+margin_left = 20.0
+margin_right = 300.0
+margin_bottom = 56.0
+
+[node name="Tips" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions"]
+margin_right = 280.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+text = "$1 Tip Jar
+Show Thanks
+(+60 Gems)"
+align = 1
+valign = 2
+
+[node name="BuyTip" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions"]
+margin_top = 84.0
+margin_right = 280.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 280, 40 )
+text = "TIP JAR - $1.00"
+
+[node name="Gems" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions"]
+margin_top = 128.0
+margin_right = 280.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 0, 60 )
+text = "Buy Gems"
+align = 1
+valign = 2
+
+[node name="GemOptions" type="HBoxContainer" parent="ScrollContainer/StoreOptions/Support/SupportOptions"]
+margin_top = 192.0
+margin_right = 280.0
+margin_bottom = 312.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
+margin_left = 10.0
+margin_right = 90.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 80, 120 )
+
+[node name="Label" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "300
+(+15)
+
+$4.99"
+align = 1
+valign = 1
+
+[node name="Button2" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
+margin_left = 100.0
+margin_right = 180.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 80, 120 )
+
+[node name="Label2" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/Button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "600
+(+30)
+
+$9.99"
+align = 1
+valign = 1
+
+[node name="Button3" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
+margin_left = 190.0
+margin_right = 270.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 80, 120 )
+
+[node name="Label3" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/Button3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "1500
+(+150)
+
+$19.99"
+align = 1
+valign = 1

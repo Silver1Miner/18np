@@ -40,6 +40,11 @@ func set_month(var _month : int):
 func set_year(var _year : int):
 	year = _year
 
+func change_to_today() -> void:
+	set_day(OS.get_datetime()["day"])
+	set_month(OS.get_datetime()["month"])
+	set_year(OS.get_datetime()["year"])
+
 func change_to_prev_month():
 	var selected_month = get_month()
 	selected_month -= 1

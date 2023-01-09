@@ -43,8 +43,8 @@ align = 1
 valign = 1
 
 [node name="SizeSelect" parent="Panes/Training" instance=ExtResource( 4 )]
-margin_top = -187.0
-margin_bottom = 187.0
+margin_top = -200.0
+margin_bottom = 223.0
 
 [node name="Daily" type="Control" parent="Panes"]
 margin_left = 720.0
@@ -118,7 +118,8 @@ margin_left = 45.0
 margin_right = 125.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 80, 40 )
-text = "9999999"
+text = "0"
+align = 1
 valign = 1
 
 [node name="Gems" type="TextureButton" parent="Overlay/Panel/Status"]
@@ -140,7 +141,8 @@ margin_left = 45.0
 margin_right = 125.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 80, 40 )
-text = "9999999"
+text = "0"
+align = 1
 valign = 1
 
 [node name="SettingsButton" type="TextureButton" parent="Overlay/Panel"]

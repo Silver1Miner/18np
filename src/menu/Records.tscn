@@ -13,8 +13,15 @@ script = ExtResource( 3 )
 
 [node name="CalendarUI" parent="." instance=ExtResource( 2 )]
 
+[node name="ToToday" type="Button" parent="."]
+margin_left = 298.0
+margin_right = 360.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 62, 40 )
+text = "Today"
+
 [node name="Panel" type="Panel" parent="."]
-margin_top = 360.0
+margin_top = 320.0
 margin_right = 360.0
 margin_bottom = 520.0
 
@@ -26,20 +33,15 @@ align = 1
 valign = 1
 
 [node name="Status" type="HBoxContainer" parent="Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = -24.0
-margin_right = 160.0
-margin_bottom = 24.0
+margin_top = 40.0
+margin_right = 360.0
+margin_bottom = 88.0
 custom_constants/separation = 20
 alignment = 1
 
 [node name="Clock" type="VBoxContainer" parent="Panel/Status"]
-margin_left = 30.0
-margin_right = 150.0
+margin_left = 50.0
+margin_right = 170.0
 margin_bottom = 48.0
 
 [node name="Text" type="Label" parent="Panel/Status/Clock"]
@@ -57,8 +59,8 @@ text = "00:00"
 align = 1
 
 [node name="Moves" type="VBoxContainer" parent="Panel/Status"]
-margin_left = 170.0
-margin_right = 290.0
+margin_left = 190.0
+margin_right = 310.0
 margin_bottom = 48.0
 
 [node name="Text" type="Label" parent="Panel/Status/Moves"]
@@ -76,3 +78,4 @@ text = "0"
 align = 1
 
 [connection signal="date_selected" from="CalendarUI" to="." method="_on_CalendarUI_date_selected"]
+[connection signal="pressed" from="ToToday" to="." method="_on_ToToday_pressed"]
