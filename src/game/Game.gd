@@ -17,6 +17,9 @@ onready var win_moves_display = $Complete/Display/Status/Moves/Value
 onready var win_picture = $Complete/Display/Picture
 onready var win_replay = $Complete/Controls/Replay
 onready var win_home = $Complete/Controls/Home
+onready var solver_panel = $GameView/Panel/SolverPanel
+onready var solver_button = $GameView/Panel/SolverPanel/Cheat
+onready var solver_label = $GameView/Panel/SolverPanel/Solvers
 var challenge = false
 var current_seed = 1
 var seconds = 0
@@ -37,16 +40,20 @@ func set_challenge(value: bool) -> void:
 	if challenge:
 		clock_tab.visible = true
 		moves_tab.visible = true
+		solver_panel.visible = false
 	else:
 		clock_tab.visible = !UserSettings.hide_times
 		moves_tab.visible = !UserSettings.hide_moves
+		solver_panel.visible = true
+		solver_label.text = "Solvers: " + str(UserData.solvers)
 	board.update_background_texture(UserData.pictures[UserSettings.picture_index][1])
 	title.text = UserData.pictures[UserSettings.picture_index][0]
 	seconds = 0
-	minutes = 0 
+	minutes = 0
 	moves = 0
 	clock_display.text = "00:00"
 	moves_display.text = "0"
+	solver_button.disabled = true
 	instructions.visible = true
 
 func reset_game(size: int) -> void:
@@ -55,6 +62,9 @@ func reset_game(size: int) -> void:
 func _on_Board_game_started() -> void:
 	timer.paused = false
 	instructions.visible = false
+	if solver_panel.visible:
+		solver_label.text = "Solvers: " + str(UserData.solvers)
+		solver_button.disabled = UserData.solvers <= 0
 	timer.start(1)
 	seconds = 0
 	minutes = 0
@@ -62,6 +72,7 @@ func _on_Board_game_started() -> void:
 
 func _on_Board_game_won() -> void:
 	timer.stop()
+	solver_button.disabled = true
 	win_picture.texture = board.background_texture 
 	win_clock_display.text = clock_display.text
 	win_moves_display.text = moves_display.text
@@ -119,9 +130,13 @@ func _on_Restart_pressed() -> void:
 	clock_display.text = "00:00"
 	moves_display.text = "0"
 	instructions.visible = true
+	solver_button.disabled = true
 
 func _on_Cheat_pressed() -> void:
 	board.auto_win()
+	if UserData.solvers > 0:
+		UserData.solvers -= 1
+		solver_label.text = "Solvers: " + str(UserData.solvers)
 
 func _on_Cancel_pressed() -> void:
 	quit_menu.visible = false
@@ -135,4 +150,6 @@ func _on_Quit_pressed() -> void:
 	moves = 0
 	clock_display.text = "00:00"
 	moves_display.text = "0"
+	if solver_panel.visible:
+		solver_button.disabled = true
 	emit_signal("back")

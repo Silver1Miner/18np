@@ -6,6 +6,7 @@ var owned_pictures = [0, 1]
 var streak_current = 0
 var streak_max = 0
 var streak_shields = 0
+var solvers = 5
 var gems = 0
 var last_log_time = 0
 # RECORDS
@@ -61,6 +62,7 @@ func save_inventory() -> void:
 		"streak_current": streak_current,
 		"streak_max": streak_max,
 		"streak_shields": streak_shields,
+		"solvers": solvers,
 		"gems": gems,
 		"last_log_time": last_log_time,
 	}
@@ -86,6 +88,8 @@ func load_inventory() -> void:
 			streak_max = int(invd.streak_max)
 		if invd.has("streak_shields"):
 			streak_shields = int(invd.streak_shields)
+		if invd.has("solvers"):
+			solvers = int(invd.solvers)
 		if invd.has("gems"):
 			gems = int(invd.gems)
 		if invd.has("last_log_time"):

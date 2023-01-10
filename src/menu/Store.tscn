@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/gui/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/menu/Store.gd" type="Script" id=2]
 
 [node name="Store" type="Control"]
 margin_right = 360.0
 margin_bottom = 520.0
 rect_min_size = Vector2( 360, 520 )
 theme = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_right = 360.0
@@ -20,41 +22,152 @@ autowrap = true
 margin_left = 20.0
 margin_top = 40.0
 margin_right = 340.0
-margin_bottom = 500.0
+margin_bottom = 480.0
 
 [node name="StoreOptions" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 320.0
-margin_bottom = 760.0
+margin_bottom = 900.0
 mouse_filter = 2
 custom_constants/separation = 20
 
-[node name="Pictures" type="Panel" parent="ScrollContainer/StoreOptions"]
+[node name="Tools" type="Panel" parent="ScrollContainer/StoreOptions"]
 margin_right = 320.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 320, 200 )
+margin_bottom = 260.0
+rect_min_size = Vector2( 320, 260 )
 mouse_filter = 2
 
-[node name="PictureOptions" type="VBoxContainer" parent="ScrollContainer/StoreOptions/Pictures"]
+[node name="ToolOptions" type="VBoxContainer" parent="ScrollContainer/StoreOptions/Tools"]
 margin_left = 20.0
 margin_right = 300.0
 margin_bottom = 200.0
+custom_constants/separation = 0
 
-[node name="Music" type="Panel" parent="ScrollContainer/StoreOptions"]
+[node name="Label" type="Label" parent="ScrollContainer/StoreOptions/Tools/ToolOptions"]
+margin_right = 280.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "Buy Streak Shield"
+align = 1
+valign = 1
+
+[node name="BuyShield" type="Button" parent="ScrollContainer/StoreOptions/Tools/ToolOptions"]
+margin_top = 40.0
+margin_right = 280.0
+margin_bottom = 70.8161
+text = "200 Gems"
+
+[node name="OwnedShields" type="Label" parent="ScrollContainer/StoreOptions/Tools/ToolOptions"]
+margin_top = 70.0
+margin_right = 280.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 30 )
+text = "(0/5 Owned)"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="ScrollContainer/StoreOptions/Tools/ToolOptions"]
+margin_top = 100.0
+margin_right = 280.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Label2" type="Label" parent="ScrollContainer/StoreOptions/Tools/ToolOptions"]
+margin_top = 130.0
+margin_right = 280.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 0, 60 )
+text = "Buy Instant Solver
+(Not usable in Daily Challenge)"
+align = 1
+valign = 1
+
+[node name="BuySolver" type="Button" parent="ScrollContainer/StoreOptions/Tools/ToolOptions"]
+margin_top = 190.0
+margin_right = 280.0
+margin_bottom = 220.816
+text = "100 Gems"
+
+[node name="OwnedSolvers" type="Label" parent="ScrollContainer/StoreOptions/Tools/ToolOptions"]
 margin_top = 220.0
+margin_right = 280.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 0, 30 )
+text = "(0/99 Owned)"
+align = 1
+valign = 1
+
+[node name="Unlocks" type="Panel" parent="ScrollContainer/StoreOptions"]
+margin_top = 280.0
 margin_right = 320.0
-margin_bottom = 420.0
-rect_min_size = Vector2( 320, 200 )
+margin_bottom = 560.0
+rect_min_size = Vector2( 320, 280 )
 mouse_filter = 2
 
-[node name="MusicOptions" type="VBoxContainer" parent="ScrollContainer/StoreOptions/Music"]
+[node name="UnlockOptions" type="VBoxContainer" parent="ScrollContainer/StoreOptions/Unlocks"]
 margin_left = 20.0
 margin_right = 300.0
 margin_bottom = 200.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
+margin_right = 280.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+text = "Unlock Random New Picture"
+align = 1
+valign = 1
+
+[node name="BuyPicture" type="Button" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
+margin_top = 50.0
+margin_right = 280.0
+margin_bottom = 80.8161
+text = "50 Gems"
+
+[node name="OwnedPictures" type="Label" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
+margin_top = 80.0
+margin_right = 280.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 40 )
+text = "(2/10 Unlocked)"
+align = 1
+valign = 1
+
+[node name="Control" type="Control" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
+margin_top = 120.0
+margin_right = 280.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Label2" type="Label" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
+margin_top = 150.0
+margin_right = 280.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 50 )
+text = "Unlock Random New Music"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="BuyMusic" type="Button" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
+margin_top = 200.0
+margin_right = 280.0
+margin_bottom = 230.816
+text = "100 Gems"
+
+[node name="OwnedMusic" type="Label" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
+margin_top = 230.0
+margin_right = 280.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 0, 40 )
+text = "(1/5 Unlocked)"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="Support" type="Panel" parent="ScrollContainer/StoreOptions"]
-margin_top = 440.0
+margin_top = 580.0
 margin_right = 320.0
-margin_bottom = 760.0
+margin_bottom = 900.0
 rect_min_size = Vector2( 320, 320 )
 mouse_filter = 2
 
@@ -96,13 +209,13 @@ margin_bottom = 312.0
 custom_constants/separation = 10
 alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
+[node name="BuyGems1" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
 margin_left = 10.0
 margin_right = 90.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 80, 120 )
 
-[node name="Label" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/Button"]
+[node name="Label" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "300
@@ -112,13 +225,13 @@ $4.99"
 align = 1
 valign = 1
 
-[node name="Button2" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
+[node name="BuyGems2" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
 margin_left = 100.0
 margin_right = 180.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 80, 120 )
 
-[node name="Label2" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/Button2"]
+[node name="Label2" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "600
@@ -128,13 +241,13 @@ $9.99"
 align = 1
 valign = 1
 
-[node name="Button3" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
+[node name="BuyGems3" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions"]
 margin_left = 190.0
 margin_right = 270.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 80, 120 )
 
-[node name="Label3" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/Button3"]
+[node name="Label3" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "1500
@@ -143,3 +256,28 @@ text = "1500
 $19.99"
 align = 1
 valign = 1
+
+[node name="Confirm" type="Panel" parent="."]
+visible = false
+margin_left = 20.0
+margin_top = 40.0
+margin_right = 340.0
+margin_bottom = 480.0
+
+[node name="ConfirmOptions" type="VBoxContainer" parent="Confirm"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Confirm/ConfirmOptions"]
+margin_right = 156.0
+margin_bottom = 22.0
+text = "Confirm Purchase?"
+
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Tools/ToolOptions/BuyShield" to="." method="_on_BuyShield_pressed"]
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Tools/ToolOptions/BuySolver" to="." method="_on_BuySolver_pressed"]
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Unlocks/UnlockOptions/BuyPicture" to="." method="_on_BuyPicture_pressed"]
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Unlocks/UnlockOptions/BuyMusic" to="." method="_on_BuyMusic_pressed"]
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/BuyTip" to="." method="_on_BuyTip_pressed"]
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems1" to="." method="_on_BuyGems1_pressed"]
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems2" to="." method="_on_BuyGems2_pressed"]
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems3" to="." method="_on_BuyGems3_pressed"]

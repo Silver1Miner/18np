@@ -1,5 +1,6 @@
 extends Control
 
+signal image_changed()
 onready var jukebox_select = $Options/Jukebox/JukeboxSelect
 onready var gallery_select = $Options/Pictures
 onready var preview = $Preview
@@ -40,6 +41,7 @@ func _on_Pictures_item_selected(index: int) -> void:
 func _on_Set_pressed() -> void:
 	UserSettings.picture_index = gallery[current_index]
 	set_button.disabled = true
+	emit_signal("image_changed")
 
 func _on_Close_pressed() -> void:
 	preview.visible = false

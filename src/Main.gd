@@ -26,4 +26,3 @@ func _on_Game_back() -> void:
 	menu.check_daily()
 	menu.visible = true
 	hud.visible = true
-

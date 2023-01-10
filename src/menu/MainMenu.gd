@@ -8,9 +8,12 @@ onready var settings_button = $Overlay/Panel/SettingsButton
 onready var settings_menu = $Overlay/Panel/Settings
 onready var play_daily_button = $Panes/Daily/PlayDaily
 onready var completed_message = $Panes/Daily/Completed
+onready var background_preview = $Panes/Daily/Preview
+onready var background_title = $Panes/Daily/PreviewTitle
 
 func _ready() -> void:
 	check_daily()
+	_on_Gallery_image_changed()
 	panes.rect_position.x = 2 * -360
 
 func check_daily() -> void:
@@ -48,3 +51,7 @@ func _on_Gems_pressed() -> void:
 
 func _on_Streak_pressed() -> void:
 	_on_SelectBar_selected(3)
+
+func _on_Gallery_image_changed() -> void:
+	background_preview.texture = UserData.pictures[UserSettings.picture_index][1]
+	background_title.text = UserData.pictures[UserSettings.picture_index][0]
