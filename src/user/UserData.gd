@@ -13,6 +13,8 @@ var last_log_time = 0
 var current_year_loaded = 0
 var current_month_loaded = 0
 var current_loaded = {}
+# STAGING
+var staged_gems = 0
 
 var tracks = [
 	["A Cozy Day", preload("res://assets/audio/music/a-cozy-day-114852.mp3")]
@@ -21,6 +23,21 @@ var pictures = [
 	["Kingfisher", preload("res://assets/gallery/0/kingfisher.jpg")],
 	["Toucan", preload("res://assets/gallery/0/toucan.jpg")],
 ]
+
+func add_picture() -> void:
+	pass
+	# add picture to inventory
+
+func add_music() -> void:
+	pass
+	# add music track to inventory
+
+func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
+# warning-ignore:integer_division
+	var score_time = int(clamp((180 - (minutes * 60 + seconds))/10, 1, 18))
+# warning-ignore:integer_division
+	var score_move = int(clamp((100 - moves)/10, 1, 18))
+	staged_gems = score_time + score_move
 
 func change_records_loaded(new_year: int, new_month: int) -> void:
 	save_to_records(current_year_loaded, current_month_loaded)

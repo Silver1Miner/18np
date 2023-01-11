@@ -45,6 +45,7 @@ Audio="*res://src/audio/Audio.tscn"
 Daily="*res://src/daily/Daily.tscn"
 UserData="*res://src/user/UserData.tscn"
 UserSettings="*res://src/user/UserSettings.tscn"
+Billing="*res://src/iap/Billing.tscn"
 
 [display]
 

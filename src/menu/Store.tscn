@@ -1,7 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/gui/Theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/menu/Store.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ConfirmUp"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Confirm:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 20, -0.25, 0, 0.25, 0, 20, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Confirm:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 640, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Confirm:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 20, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Confirm:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 640, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [node name="Store" type="Control"]
 margin_right = 360.0
@@ -85,7 +132,7 @@ valign = 1
 margin_top = 190.0
 margin_right = 280.0
 margin_bottom = 220.816
-text = "100 Gems"
+text = "20 Gems"
 
 [node name="OwnedSolvers" type="Label" parent="ScrollContainer/StoreOptions/Tools/ToolOptions"]
 margin_top = 220.0
@@ -121,7 +168,7 @@ valign = 1
 margin_top = 50.0
 margin_right = 280.0
 margin_bottom = 80.8161
-text = "50 Gems"
+text = "160 Gems"
 
 [node name="OwnedPictures" type="Label" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
 margin_top = 80.0
@@ -152,7 +199,7 @@ autowrap = true
 margin_top = 200.0
 margin_right = 280.0
 margin_bottom = 230.816
-text = "100 Gems"
+text = "160 Gems"
 
 [node name="OwnedMusic" type="Label" parent="ScrollContainer/StoreOptions/Unlocks/UnlockOptions"]
 margin_top = 230.0
@@ -258,20 +305,49 @@ align = 1
 valign = 1
 
 [node name="Confirm" type="Panel" parent="."]
-visible = false
 margin_left = 20.0
-margin_top = 40.0
+margin_top = 640.0
 margin_right = 340.0
-margin_bottom = 480.0
+margin_bottom = 1080.0
+theme = ExtResource( 1 )
 
 [node name="ConfirmOptions" type="VBoxContainer" parent="Confirm"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -140.0
+margin_right = 120.0
+margin_bottom = 140.0
+custom_constants/separation = 20
 
-[node name="Label" type="Label" parent="Confirm/ConfirmOptions"]
-margin_right = 156.0
-margin_bottom = 22.0
+[node name="PurchaseLabel" type="Label" parent="Confirm/ConfirmOptions"]
+margin_right = 240.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
 text = "Confirm Purchase?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Purchase" type="Button" parent="Confirm/ConfirmOptions"]
+margin_top = 140.0
+margin_right = 240.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 240, 60 )
+text = "Purchase"
+
+[node name="Cancel" type="Button" parent="Confirm/ConfirmOptions"]
+margin_top = 220.0
+margin_right = 240.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 240, 60 )
+text = "Cancel"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ConfirmUp = SubResource( 1 )
+anims/RESET = SubResource( 2 )
 
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Tools/ToolOptions/BuyShield" to="." method="_on_BuyShield_pressed"]
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Tools/ToolOptions/BuySolver" to="." method="_on_BuySolver_pressed"]
@@ -281,3 +357,5 @@ text = "Confirm Purchase?"
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems1" to="." method="_on_BuyGems1_pressed"]
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems2" to="." method="_on_BuyGems2_pressed"]
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems3" to="." method="_on_BuyGems3_pressed"]
+[connection signal="pressed" from="Confirm/ConfirmOptions/Purchase" to="." method="_on_Purchase_pressed"]
+[connection signal="pressed" from="Confirm/ConfirmOptions/Cancel" to="." method="_on_Cancel_pressed"]

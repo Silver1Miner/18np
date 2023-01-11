@@ -10,6 +10,9 @@ onready var play_daily_button = $Panes/Daily/PlayDaily
 onready var completed_message = $Panes/Daily/Completed
 onready var background_preview = $Panes/Daily/Preview
 onready var background_title = $Panes/Daily/PreviewTitle
+onready var store = $Panes/Store
+onready var streak_label = $Overlay/Panel/Status/Streak/Label
+onready var gems_label = $Overlay/Panel/Status/Gems/Label
 
 func _ready() -> void:
 	check_daily()
@@ -26,8 +29,19 @@ func check_daily() -> void:
 		play_daily_button.disabled = false
 		play_daily_button.text = "Play!"
 		completed_message.visible = false
+	if UserData.staged_gems > 0:
+		print("gems gained")
+		UserData.gems += UserData.staged_gems
+		UserData.staged_gems = 0
+	update_header_display()
+
+func update_header_display() -> void:
+	streak_label.text = str(UserData.streak_current)
+	gems_label.text = str(UserData.gems)
 
 func _on_SelectBar_selected(current_select) -> void:
+	if store:
+		store.update_buttons()
 	if settings_button:
 		settings_button.pressed = false
 	if tween:
@@ -55,3 +69,6 @@ func _on_Streak_pressed() -> void:
 func _on_Gallery_image_changed() -> void:
 	background_preview.texture = UserData.pictures[UserSettings.picture_index][1]
 	background_title.text = UserData.pictures[UserSettings.picture_index][0]
+
+func _on_Store_purchase_made() -> void:
+	update_header_display()

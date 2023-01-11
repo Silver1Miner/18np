@@ -32,4 +32,5 @@ func on_challenge_completed(board_flat: Array, seconds: int, minutes: int, moves
 	print("today's challenge completed in ",str(minutes), ":", str(seconds), " and ", str(moves, " moves"))
 	last_day_check = get_daily_seed()
 	today_challenge_completed = true
+	UserData.score_gem_gain(seconds, minutes, moves)
 	

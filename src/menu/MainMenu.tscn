@@ -182,6 +182,7 @@ visible = false
 
 [node name="SelectBar" parent="Overlay" instance=ExtResource( 1 )]
 
+[connection signal="purchase_made" from="Panes/Store" to="." method="_on_Store_purchase_made"]
 [connection signal="size_selected" from="Panes/Training/SizeSelect" to="." method="_on_SizeSelect_size_selected"]
 [connection signal="pressed" from="Panes/Daily/PlayDaily" to="." method="_on_PlayDaily_pressed"]
 [connection signal="image_changed" from="Panes/Gallery" to="." method="_on_Gallery_image_changed"]
