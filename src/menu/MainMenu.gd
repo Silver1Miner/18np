@@ -11,6 +11,7 @@ onready var completed_message = $Panes/Daily/Completed
 onready var background_preview = $Panes/Daily/Preview
 onready var background_title = $Panes/Daily/PreviewTitle
 onready var store = $Panes/Store
+onready var records = $Panes/Records
 onready var streak_label = $Overlay/Panel/Status/Streak/Label
 onready var gems_label = $Overlay/Panel/Status/Gems/Label
 
@@ -23,7 +24,7 @@ func check_daily() -> void:
 	Daily.check_day()
 	if Daily.today_challenge_completed:
 		play_daily_button.disabled = true
-		play_daily_button.text = "Completed!"
+		play_daily_button.text = "Today's Challenge Completed!"
 		completed_message.visible = true
 	else:
 		play_daily_button.disabled = false
@@ -40,8 +41,10 @@ func update_header_display() -> void:
 	gems_label.text = str(UserData.gems)
 
 func _on_SelectBar_selected(current_select) -> void:
-	if store:
+	if current_select == 0 and store:
 		store.update_buttons()
+	if current_select == 3 and records:
+		records._on_ToToday_pressed()
 	if settings_button:
 		settings_button.pressed = false
 	if tween:

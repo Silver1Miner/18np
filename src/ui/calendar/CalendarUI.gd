@@ -37,13 +37,17 @@ func on_day_selected(btn_node) -> void:
 	emit_signal("date_selected", date)
 
 func update_calendar_buttons(selected_date: Date):
+	UserData.change_records_loaded(selected_date.get_year(), selected_date.get_month())
 	_clear_calendar_buttons()
 	var days_in_month : int = calendar.get_days_in_month(selected_date.get_month(), selected_date.get_year())
 	var start_day_of_week : int = calendar.get_weekday(1, selected_date.get_month(), selected_date.get_year())
 	for i in range(days_in_month):
 		var btn_node : Button = buttons_container.get_node("btn_" + str(i + start_day_of_week))
 		btn_node.set_text(str(i + 1))
-		btn_node.set_disabled(false)
+		if str(i+1) in UserData.current_loaded:
+			btn_node.set_disabled(false)
+		else:
+			btn_node.set_disabled(true)
 
 func _clear_calendar_buttons():
 	for i in range(BUTTONS_COUNT):

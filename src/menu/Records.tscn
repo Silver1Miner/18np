@@ -13,13 +13,6 @@ script = ExtResource( 3 )
 
 [node name="CalendarUI" parent="." instance=ExtResource( 2 )]
 
-[node name="ToToday" type="Button" parent="."]
-margin_left = 298.0
-margin_right = 360.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 62, 40 )
-text = "Today"
-
 [node name="Panel" type="Panel" parent="."]
 margin_top = 320.0
 margin_right = 360.0
@@ -76,6 +69,15 @@ margin_right = 120.0
 margin_bottom = 48.0
 text = "0"
 align = 1
+
+[node name="ToToday" type="Button" parent="."]
+visible = false
+margin_left = 120.0
+margin_top = 440.0
+margin_right = 240.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 62, 40 )
+text = "To Today"
 
 [connection signal="date_selected" from="CalendarUI" to="." method="_on_CalendarUI_date_selected"]
 [connection signal="pressed" from="ToToday" to="." method="_on_ToToday_pressed"]

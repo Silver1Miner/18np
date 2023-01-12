@@ -7,7 +7,10 @@ func _ready() -> void:
 	print(get_daily_seed())
 
 func check_day() -> void:
-	today_challenge_completed = (get_daily_seed() == last_day_check)
+	if UserData.has_record(OS.get_datetime()["year"], OS.get_datetime()["month"], OS.get_datetime()["day"]):
+		today_challenge_completed = true
+	else:
+		today_challenge_completed = (get_daily_seed() == last_day_check)
 
 func get_daily_seed() -> int:
 	var time = OS.get_datetime()
@@ -33,4 +36,4 @@ func on_challenge_completed(board_flat: Array, seconds: int, minutes: int, moves
 	last_day_check = get_daily_seed()
 	today_challenge_completed = true
 	UserData.score_gem_gain(seconds, minutes, moves)
-	
+	UserData.save_today(seconds, minutes, moves)

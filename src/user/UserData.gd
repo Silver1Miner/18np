@@ -12,7 +12,9 @@ var last_log_time = 0
 # RECORDS
 var current_year_loaded = 0
 var current_month_loaded = 0
-var current_loaded = {}
+var current_loaded = {
+	"-1": {}
+}
 # STAGING
 var staged_gems = 0
 
@@ -40,12 +42,13 @@ func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
 	staged_gems = score_time + score_move
 
 func change_records_loaded(new_year: int, new_month: int) -> void:
-	save_to_records(current_year_loaded, current_month_loaded)
+	if len(current_loaded) > 1:
+		save_to_records(current_year_loaded, current_month_loaded)
 	current_year_loaded = new_year
 	current_month_loaded = new_month
 	load_from_records(current_year_loaded, current_month_loaded)
 
-func save_daily_record(day: int, moves: int, minutes: int, seconds: int) -> void:
+func save_today(seconds: int, minutes: int, moves: int) -> void:
 	var log_time = OS.get_unix_time()
 	if last_log_time == 0:
 		streak_current = 1
@@ -60,6 +63,7 @@ func save_daily_record(day: int, moves: int, minutes: int, seconds: int) -> void
 		streak_max = streak_current
 	save_inventory()
 	change_records_loaded(OS.get_datetime()["year"], OS.get_datetime()["month"])
+	var day = OS.get_datetime()["day"]
 	if current_loaded.has(day):
 		push_error("a record was already saved for this day; overwriting")
 	current_loaded[day] = {
@@ -67,11 +71,16 @@ func save_daily_record(day: int, moves: int, minutes: int, seconds: int) -> void
 		"minutes": minutes,
 		"seconds": seconds
 	}
-	save_to_records(OS.get_datetime()["year"], OS.get_datetime()["month"])
+	change_records_loaded(OS.get_datetime()["year"], OS.get_datetime()["month"])
 	last_log_time = log_time
+	save_inventory()
 
 func save_inventory() -> void:
 	var save = File.new()
+	var dir = Directory.new()
+	dir.open("user://")
+	if not dir.dir_exists("user://records/"):
+		dir.make_dir("user://records/")
 	save.open("user://records/inventory.save", File.WRITE)
 	var inv_dict = {
 		"owned_tracks": owned_tracks,
@@ -115,9 +124,16 @@ func load_inventory() -> void:
 
 func save_to_records(year: int, month: int) -> void:
 	print("attempting to save records from year ", year, " month ", month)
-	var dir = "user://records/" + str(year) + "/" + str(month) + "/records.save"
+	var dir = Directory.new()
+	if not dir.dir_exists("user://records/"):
+		dir.make_dir("user://records/")
+	if not dir.dir_exists("user://records/" + str(year) + "/"):
+		dir.make_dir("user://records/" + str(year) + "/")
+	if not dir.dir_exists("user://records/" + str(year) + "/" + str(month) + "/"):
+		dir.make_dir("user://records/" + str(year) + "/" + str(month) + "/")
+	var d = "user://records/" + str(year) + "/" + str(month) + "/records.save"
 	var records = File.new()
-	records.open(dir, File.WRITE)
+	records.open(d, File.WRITE)
 	var records_dict = current_loaded.duplicate(true)
 	print(records_dict)
 	records.store_line(to_json(records_dict))
@@ -125,12 +141,18 @@ func save_to_records(year: int, month: int) -> void:
 
 func load_from_records(year: int, month: int) -> void:
 	print("attemting to load records from year: ", year, " month ", month)
-	var dir = "user://records/" + str(year) + "/" + str(month) + "/records.save"
+	var d = "user://records/" + str(year) + "/" + str(month) + "/records.save"
 	var records = File.new()
-	if not records.file_exists(dir):
+	if not records.file_exists(d):
 		print("no records file found for year ", year, " month ", month)
+		current_loaded = {"-1": {}}
 		return
-	records.open(dir, File.READ)
+	records.open(d, File.READ)
 	var sd = parse_json(records.get_line())
-	current_loaded = sd.duplicate(true)
+	if sd:
+		current_loaded = sd.duplicate(true)
 	records.close()
+
+func has_record(year: int, month: int, day: int) -> bool:
+	change_records_loaded(year, month)
+	return str(day) in current_loaded
