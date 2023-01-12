@@ -39,6 +39,7 @@ func check_daily() -> void:
 func update_header_display() -> void:
 	streak_label.text = str(UserData.streak_current)
 	gems_label.text = str(UserData.gems)
+	UserData.save_inventory()
 
 func _on_SelectBar_selected(current_select) -> void:
 	if current_select == 0 and store:

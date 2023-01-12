@@ -12,9 +12,7 @@ var last_log_time = 0
 # RECORDS
 var current_year_loaded = 0
 var current_month_loaded = 0
-var current_loaded = {
-	"-1": {}
-}
+var current_loaded = {}
 # STAGING
 var staged_gems = 0
 
@@ -25,6 +23,9 @@ var pictures = [
 	["Kingfisher", preload("res://assets/gallery/0/kingfisher.jpg")],
 	["Toucan", preload("res://assets/gallery/0/toucan.jpg")],
 ]
+
+func _ready() -> void:
+	load_inventory()
 
 func add_picture() -> void:
 	pass
@@ -42,7 +43,7 @@ func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
 	staged_gems = score_time + score_move
 
 func change_records_loaded(new_year: int, new_month: int) -> void:
-	if len(current_loaded) > 1:
+	if len(current_loaded) > 0:
 		save_to_records(current_year_loaded, current_month_loaded)
 	current_year_loaded = new_year
 	current_month_loaded = new_month
@@ -73,7 +74,6 @@ func save_today(seconds: int, minutes: int, moves: int) -> void:
 	}
 	change_records_loaded(OS.get_datetime()["year"], OS.get_datetime()["month"])
 	last_log_time = log_time
-	save_inventory()
 
 func save_inventory() -> void:
 	var save = File.new()
@@ -90,6 +90,7 @@ func save_inventory() -> void:
 		"streak_shields": streak_shields,
 		"solvers": solvers,
 		"gems": gems,
+		"staged_gems": staged_gems,
 		"last_log_time": last_log_time,
 	}
 	save.store_line(to_json(inv_dict))
@@ -103,6 +104,7 @@ func load_inventory() -> void:
 		return
 	save.open(save_dir, File.READ)
 	var invd = parse_json(save.get_line())
+	print(invd)
 	if typeof(invd) == TYPE_DICTIONARY:
 		if invd.has("owned_tracks"):
 			owned_tracks = invd.owned_tracks.duplicate(true)
@@ -116,6 +118,8 @@ func load_inventory() -> void:
 			streak_shields = int(invd.streak_shields)
 		if invd.has("solvers"):
 			solvers = int(invd.solvers)
+		if invd.has("staged_gems"):
+			gems = int(invd.staged_gems)
 		if invd.has("gems"):
 			gems = int(invd.gems)
 		if invd.has("last_log_time"):
@@ -145,7 +149,7 @@ func load_from_records(year: int, month: int) -> void:
 	var records = File.new()
 	if not records.file_exists(d):
 		print("no records file found for year ", year, " month ", month)
-		current_loaded = {"-1": {}}
+		current_loaded = {}
 		return
 	records.open(d, File.READ)
 	var sd = parse_json(records.get_line())
