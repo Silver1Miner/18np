@@ -317,6 +317,7 @@ valign = 1
 [node name="ColorRect" type="ColorRect" parent="Overlay/Panel/Status/Streak/Label"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
 
 [node name="Gems" type="TextureButton" parent="Overlay/Panel/Status"]
@@ -345,6 +346,7 @@ valign = 1
 [node name="ColorRect2" type="ColorRect" parent="Overlay/Panel/Status/Gems/Label"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
 
 [node name="SettingsButton" type="TextureButton" parent="Overlay/Panel"]

@@ -142,7 +142,7 @@ func load_inventory() -> void:
 	save.close()
 
 func save_to_records(year: int, month: int) -> void:
-	print("attempting to save records from year ", year, " month ", month)
+	#print("attempting to save records from year ", year, " month ", month)
 	var dir = Directory.new()
 	if not dir.dir_exists("user://records/"):
 		dir.make_dir("user://records/")
@@ -158,7 +158,7 @@ func save_to_records(year: int, month: int) -> void:
 	records.close()
 
 func load_from_records(year: int, month: int) -> void:
-	print("attemting to load records from year: ", year, " month ", month)
+	#print("attemting to load records from year: ", year, " month ", month)
 	var d = "user://records/" + str(year) + "/" + str(month) + "/records.save"
 	var records = File.new()
 	if not records.file_exists(d):
@@ -169,6 +169,8 @@ func load_from_records(year: int, month: int) -> void:
 	var sd = parse_json(records.get_line())
 	if sd:
 		current_loaded = sd.duplicate(true)
+	else:
+		current_loaded = {}
 	records.close()
 
 func has_record(year: int, month: int, day: int) -> bool:

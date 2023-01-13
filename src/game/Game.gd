@@ -40,7 +40,7 @@ func set_challenge(value: bool) -> void:
 	if challenge:
 		clock_tab.visible = true
 		moves_tab.visible = true
-		#solver_panel.visible = false
+		solver_panel.visible = false
 	else:
 		clock_tab.visible = !UserSettings.hide_times
 		moves_tab.visible = !UserSettings.hide_moves
