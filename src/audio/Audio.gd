@@ -10,7 +10,6 @@ func play_music(id: int) -> void:
 var available = []
 var queue = []
 func _ready():
-	UserSettings.load_settings()
 	AudioServer.set_bus_mute(1, UserSettings.mute_sound)
 	AudioServer.set_bus_mute(2, UserSettings.mute_music)
 	play_music(UserSettings.jukebox_index)

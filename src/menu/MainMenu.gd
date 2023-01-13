@@ -14,11 +14,14 @@ onready var store = $Panes/Store
 onready var records = $Panes/Records
 onready var streak_label = $Overlay/Panel/Status/Streak/Label
 onready var gems_label = $Overlay/Panel/Status/Gems/Label
+onready var anim = $Overlay/Panel/AnimationPlayer
 
 func _ready() -> void:
 	check_daily()
 	_on_Gallery_image_changed()
 	panes.rect_position.x = 2 * -360
+	UserData.check_expired()
+	update_header_display()
 
 func check_daily() -> void:
 	Daily.check_day()
@@ -31,12 +34,11 @@ func check_daily() -> void:
 		play_daily_button.text = "Play!"
 		completed_message.visible = false
 	if UserData.staged_gems > 0:
-		print("gems gained")
-		UserData.gems += UserData.staged_gems
-		UserData.staged_gems = 0
-	update_header_display()
+		anim.play("StreakUpdate")
 
 func update_header_display() -> void:
+	UserData.gems += UserData.staged_gems
+	UserData.staged_gems = 0
 	streak_label.text = str(UserData.streak_current)
 	gems_label.text = str(UserData.gems)
 	UserData.save_inventory()
@@ -76,3 +78,7 @@ func _on_Gallery_image_changed() -> void:
 
 func _on_Store_purchase_made() -> void:
 	update_header_display()
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "StreakUpdate":
+		update_header_display()

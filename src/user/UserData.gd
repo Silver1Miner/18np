@@ -42,6 +42,19 @@ func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
 	var score_move = int(clamp((100 - moves)/10, 1, 18))
 	staged_gems = score_time + score_move
 
+func check_expired() -> void:
+	var log_time = OS.get_unix_time()
+	if last_log_time == 0:
+		streak_current = 0
+		print("no log saved")
+	elif log_time - last_log_time > 86400:
+		print("streak broken")
+		if streak_shields > 0:
+			streak_shields -= 1
+		else:
+			streak_current = 1
+	save_inventory()
+
 func change_records_loaded(new_year: int, new_month: int) -> void:
 	if len(current_loaded) > 0:
 		save_to_records(current_year_loaded, current_month_loaded)
@@ -51,17 +64,19 @@ func change_records_loaded(new_year: int, new_month: int) -> void:
 
 func save_today(seconds: int, minutes: int, moves: int) -> void:
 	var log_time = OS.get_unix_time()
+	print("seconds since last record log: ", log_time - last_log_time)
 	if last_log_time == 0:
 		streak_current = 1
 	elif log_time - last_log_time > 86400: # seconds in days
 		if streak_shields > 0:
 			streak_shields -= 1
 		else:
-			streak_current = 0
+			streak_current = 1
 	else:
 		streak_current += 1
 	if streak_current > streak_max:
 		streak_max = streak_current
+	last_log_time = log_time
 	save_inventory()
 	change_records_loaded(OS.get_datetime()["year"], OS.get_datetime()["month"])
 	var day = OS.get_datetime()["day"]
@@ -73,7 +88,6 @@ func save_today(seconds: int, minutes: int, moves: int) -> void:
 		"seconds": seconds
 	}
 	change_records_loaded(OS.get_datetime()["year"], OS.get_datetime()["month"])
-	last_log_time = log_time
 
 func save_inventory() -> void:
 	var save = File.new()
@@ -97,6 +111,7 @@ func save_inventory() -> void:
 	save.close()
 
 func load_inventory() -> void:
+	print("attempting to load iventory")
 	var save_dir = "user://records/inventory.save"
 	var save = File.new()
 	if not save.file_exists(save_dir):
@@ -123,7 +138,7 @@ func load_inventory() -> void:
 		if invd.has("gems"):
 			gems = int(invd.gems)
 		if invd.has("last_log_time"):
-			last_log_time = int(last_log_time)
+			last_log_time = int(invd.last_log_time)
 	save.close()
 
 func save_to_records(year: int, month: int) -> void:
@@ -139,7 +154,6 @@ func save_to_records(year: int, month: int) -> void:
 	var records = File.new()
 	records.open(d, File.WRITE)
 	var records_dict = current_loaded.duplicate(true)
-	print(records_dict)
 	records.store_line(to_json(records_dict))
 	records.close()
 
