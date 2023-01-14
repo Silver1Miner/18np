@@ -51,6 +51,7 @@ func _on_SelectBar_selected(current_select) -> void:
 	if settings_button:
 		settings_button.pressed = false
 	if tween:
+		Audio.play_slide()
 		tween.interpolate_property(self, "rect_position:x",
 		rect_position.x, (current_select - 2) * -360, 0.3,
 		Tween.TRANS_QUART, Tween.EASE_IN_OUT)
@@ -65,6 +66,7 @@ func _on_PlayDaily_pressed() -> void:
 func _on_SettingsButton_toggled(button_pressed: bool) -> void:
 	UserSettings.save_settings()
 	settings_menu.visible = button_pressed
+	Audio.play_sound("res://assets/audio/sounds/switch_004.ogg")
 
 func _on_Gems_pressed() -> void:
 	_on_SelectBar_selected(0)
@@ -81,4 +83,5 @@ func _on_Store_purchase_made() -> void:
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "StreakUpdate":
+		Audio.play_sound("res://assets/audio/sounds/confirmation_004.ogg")
 		update_header_display()

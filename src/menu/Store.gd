@@ -25,6 +25,7 @@ func _ready() -> void:
 func _on_BuyShield_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	cost = 200
 	buy_state = BUY.SHIELD
 	anim.play("ConfirmUp")
@@ -32,6 +33,7 @@ func _on_BuyShield_pressed() -> void:
 func _on_BuySolver_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	cost = 20
 	buy_state = BUY.SOLVER
 	anim.play("ConfirmUp")
@@ -39,6 +41,7 @@ func _on_BuySolver_pressed() -> void:
 func _on_BuyPicture_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	cost = 160
 	buy_state = BUY.PICTURE
 	anim.play("ConfirmUp")
@@ -46,6 +49,7 @@ func _on_BuyPicture_pressed() -> void:
 func _on_BuyMusic_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	cost = 160
 	buy_state = BUY.MUSIC
 	anim.play("ConfirmUp")
@@ -53,6 +57,7 @@ func _on_BuyMusic_pressed() -> void:
 func _on_BuyTip_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	if Billing.android_iap:
 		Billing.android_purchase(0)
 		print("buy 60 gems via android")
@@ -65,6 +70,7 @@ func _on_BuyTip_pressed() -> void:
 func _on_BuyGems1_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	if Billing.android_iap:
 		Billing.android_purchase(1)
 		print("buy 315 gems via android")
@@ -77,6 +83,7 @@ func _on_BuyGems1_pressed() -> void:
 func _on_BuyGems2_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	if Billing.android_iap:
 		Billing.android_purchase(2)
 		print("buy 630 gems via android")
@@ -89,6 +96,7 @@ func _on_BuyGems2_pressed() -> void:
 func _on_BuyGems3_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	if Billing.android_iap:
 		Billing.android_purchase(3)
 		print("buy 1650 gems via android")
@@ -101,6 +109,7 @@ func _on_BuyGems3_pressed() -> void:
 func _on_Purchase_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	UserData.gems = int(clamp(UserData.gems - cost, 0, UserData.gems))
 	match buy_state:
 		BUY.SHIELD:
@@ -117,6 +126,7 @@ func _on_Purchase_pressed() -> void:
 func _on_Cancel_pressed() -> void:
 	if anim.is_playing():
 		return
+	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	anim.play_backwards("ConfirmUp")
 	cost = 0
 	buy_state = BUY.NONE

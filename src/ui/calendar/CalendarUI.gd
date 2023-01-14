@@ -6,6 +6,7 @@ var calendar := Calendar.new()
 var date := Date.new()
 onready var buttons_container = $PanelContainer/vbox/hbox_days
 onready var month_year_label = $PanelContainer/vbox/hbox_month_year/label_month_year
+var ready = false
 
 func _ready() -> void:
 	var month_year_path = "PanelContainer/vbox/hbox_month_year/"
@@ -16,6 +17,7 @@ func _ready() -> void:
 	setup_button_signals()
 	refresh_data()
 	check_today()
+	ready = true
 
 func setup_button_signals() -> void:
 	for i in range(BUTTONS_COUNT):
@@ -31,6 +33,8 @@ func check_today() -> void:
 			btn_node.emit_signal("pressed")
 
 func on_day_selected(btn_node) -> void:
+	if ready:
+		Audio.play_slide()
 	var day := int(btn_node.get_text())
 	date.set_day(day)
 	update_calendar_buttons(date)
@@ -61,17 +65,21 @@ func refresh_data():
 	update_calendar_buttons(date)
 
 func go_prev_month():
+	Audio.play_slide()
 	date.change_to_prev_month()
 	refresh_data()
 
 func go_next_month():
+	Audio.play_slide()
 	date.change_to_next_month()
 	refresh_data()
 
 func go_prev_year():
+	Audio.play_slide()
 	date.change_to_prev_year()
 	refresh_data()
 
 func go_next_year():
+	Audio.play_slide()
 	date.change_to_next_year()
 	refresh_data()

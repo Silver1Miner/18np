@@ -160,7 +160,7 @@ custom_constants/separation = 0
 margin_right = 280.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-text = "Unlock Random New Picture"
+text = "Unlock New Picture"
 align = 1
 valign = 1
 
@@ -190,7 +190,7 @@ margin_top = 150.0
 margin_right = 280.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 50 )
-text = "Unlock Random New Music"
+text = "Unlock New Music"
 align = 1
 valign = 1
 autowrap = true

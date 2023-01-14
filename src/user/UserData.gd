@@ -17,10 +17,22 @@ var current_loaded = {}
 var staged_gems = 0
 
 var tracks = [
-	["A Cozy Day", preload("res://assets/audio/music/a-cozy-day-114852.mp3")]
+	["A Cozy Day", preload("res://assets/audio/music/a-cozy-day-114852.mp3")],
+	["Dreamy", preload("res://assets/audio/music/dreamy-114855.mp3")],
+	["Feeling", preload("res://assets/audio/music/feeling-115471.mp3")],
+	["Just Chill", preload("res://assets/audio/music/just-chill-114854.mp3")],
+	["Night Coffee", preload("res://assets/audio/music/night-coffee-shop-114856.mp3")],
 ]
 var pictures = [
 	["Kingfisher", preload("res://assets/gallery/0/kingfisher.jpg")],
+	["Baby Chicken", preload("res://assets/gallery/0/baby chicken.jpg")],
+	["Blue Jay", preload("res://assets/gallery/0/blue jay.jpg")],
+	["Cardinal", preload("res://assets/gallery/0/cardinal.jpg")],
+	["Dove", preload("res://assets/gallery/0/dove.jpg")],
+	["Finch", preload("res://assets/gallery/0/finch.jpg")],
+	["Hummingbird", preload("res://assets/gallery/0/hummingbird.jpg")],
+	["Owls", preload("res://assets/gallery/0/owls.jpg")],
+	["Swan", preload("res://assets/gallery/0/swan.jpg")],
 	["Toucan", preload("res://assets/gallery/0/toucan.jpg")],
 ]
 
@@ -28,12 +40,16 @@ func _ready() -> void:
 	load_inventory()
 
 func add_picture() -> void:
-	pass
-	# add picture to inventory
+	var next_pic = owned_tracks.size()
+	if not next_pic in owned_pictures:
+		owned_pictures.append(next_pic)
+		save_inventory()
 
 func add_music() -> void:
-	pass
-	# add music track to inventory
+	var next_track = owned_tracks.size()
+	if not next_track in owned_tracks:
+		owned_tracks.append(next_track)
+		save_inventory()
 
 func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
 # warning-ignore:integer_division

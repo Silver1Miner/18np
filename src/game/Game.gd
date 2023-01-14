@@ -72,6 +72,7 @@ func _on_Board_game_started() -> void:
 
 func _on_Board_game_won() -> void:
 	timer.stop()
+	Audio.play_sound("res://assets/audio/sounds/confirmation_004.ogg")
 	solver_button.disabled = true
 	win_picture.texture = board.background_texture 
 	win_clock_display.text = clock_display.text
@@ -108,6 +109,7 @@ func _on_Timer_timeout() -> void:
 	clock_display.text = minute_display + ":" + second_display
 
 func _on_Back_pressed() -> void:
+	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	if seconds > 0:
 		timer.paused = true
 		quit_menu.visible = true
@@ -115,6 +117,7 @@ func _on_Back_pressed() -> void:
 		emit_signal("back")
 
 func _on_Home_pressed() -> void:
+	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	emit_signal("back")
 
 func _on_Replay_pressed() -> void:
@@ -123,6 +126,7 @@ func _on_Replay_pressed() -> void:
 
 func _on_Restart_pressed() -> void:
 	timer.stop()
+	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	board.reset_board()
 	seconds = 0
 	minutes = 0 
@@ -139,10 +143,12 @@ func _on_Cheat_pressed() -> void:
 		solver_label.text = "Solvers: " + str(UserData.solvers)
 
 func _on_Cancel_pressed() -> void:
+	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	quit_menu.visible = false
 	timer.paused = false
 
 func _on_Quit_pressed() -> void:
+	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	quit_menu.visible = false
 	timer.stop()
 	seconds = 0
