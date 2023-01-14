@@ -121,12 +121,17 @@ func _on_Purchase_pressed() -> void:
 		BUY.MUSIC:
 			UserData.add_music()
 	emit_signal("purchase_made")
-	_on_Cancel_pressed()
+	close_confirm()
 
 func _on_Cancel_pressed() -> void:
 	if anim.is_playing():
 		return
 	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
+	close_confirm()
+
+func close_confirm() -> void:
+	if anim.is_playing():
+		return
 	anim.play_backwards("ConfirmUp")
 	cost = 0
 	buy_state = BUY.NONE

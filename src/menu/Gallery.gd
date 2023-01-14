@@ -14,6 +14,7 @@ func _ready() -> void:
 	preview.visible = false
 	update_jukebox()
 	update_gallery()
+	update_jukebox_choice()
 
 func update_jukebox() -> void:
 	jukebox.clear()
@@ -21,6 +22,11 @@ func update_jukebox() -> void:
 	for track in UserData.owned_tracks:
 		jukebox_select.add_item(UserData.tracks[track][0])
 		jukebox.append(track)
+	if UserSettings.jukebox_index < jukebox_select.get_item_count():
+		jukebox_select.select(UserSettings.jukebox_index)
+
+func update_jukebox_choice() -> void:
+	_on_JukeboxSelect_item_selected(UserSettings.jukebox_index)
 
 func update_gallery() -> void:
 	gallery.clear()
@@ -31,19 +37,28 @@ func update_gallery() -> void:
 
 func _on_JukeboxSelect_item_selected(index: int) -> void:
 	print("jukebox select: ", index)
-	Audio.play_music(jukebox[index])
+	UserSettings.jukebox_index = index
+	if UserSettings.jukebox_index < jukebox.size():
+		Audio.play_music(jukebox[UserSettings.jukebox_index])
+	UserSettings.save_settings()
 
 func _on_Pictures_item_selected(index: int) -> void:
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	current_index = index
 	preview_pic.texture = UserData.pictures[gallery[current_index]][1]
+	set_button.disabled = false
 	preview.visible = true
 
 func _on_Set_pressed() -> void:
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	UserSettings.picture_index = gallery[current_index]
+	UserSettings.save_settings()
 	set_button.disabled = true
+	preview.visible = false
 	emit_signal("image_changed")
 
 func _on_Close_pressed() -> void:
+	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	preview.visible = false
 	set_button.disabled = false
 

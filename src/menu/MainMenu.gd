@@ -12,6 +12,7 @@ onready var background_preview = $Panes/Daily/Preview
 onready var background_title = $Panes/Daily/PreviewTitle
 onready var store = $Panes/Store
 onready var records = $Panes/Records
+onready var gallery = $Panes/Gallery
 onready var streak_label = $Overlay/Panel/Status/Streak/Label
 onready var gems_label = $Overlay/Panel/Status/Gems/Label
 onready var anim = $Overlay/Panel/AnimationPlayer
@@ -50,6 +51,9 @@ func _on_SelectBar_selected(current_select) -> void:
 		records._on_ToToday_pressed()
 	if settings_button:
 		settings_button.pressed = false
+	if gallery:
+		gallery.update_jukebox()
+		gallery.update_gallery()
 	if tween:
 		Audio.play_slide()
 		tween.interpolate_property(self, "rect_position:x",
