@@ -70,6 +70,8 @@ func _on_PlayDaily_pressed() -> void:
 func _on_SettingsButton_toggled(button_pressed: bool) -> void:
 	UserSettings.save_settings()
 	settings_menu.visible = button_pressed
+	settings_menu.about_panel.visible = false
+	settings_menu.about_toggle.pressed = false
 	Audio.play_sound("res://assets/audio/sounds/switch_004.ogg")
 
 func _on_Gems_pressed() -> void:

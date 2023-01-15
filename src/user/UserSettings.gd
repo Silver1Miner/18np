@@ -1,5 +1,6 @@
 extends Node
 
+var version = "v 1.0.0 "
 var hide_times = false
 var hide_moves = false
 var mute_music = false

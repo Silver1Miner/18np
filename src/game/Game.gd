@@ -20,6 +20,8 @@ onready var win_home = $Complete/Controls/Home
 onready var solver_panel = $GameView/Panel/SolverPanel
 onready var solver_button = $GameView/Panel/SolverPanel/Cheat
 onready var solver_label = $GameView/Panel/SolverPanel/Solvers
+onready var gems_label = $Complete/Display/GemGain
+onready var gems_value = $Complete/Display/GemsWon
 var challenge = false
 var current_seed = 1
 var seconds = 0
@@ -41,11 +43,15 @@ func set_challenge(value: bool) -> void:
 		clock_tab.visible = true
 		moves_tab.visible = true
 		solver_panel.visible = false
+		gems_label.text = "\nDaily Challenge Gem Reward:"
+		gems_value.text = "0"
 	else:
 		clock_tab.visible = !UserSettings.hide_times
 		moves_tab.visible = !UserSettings.hide_moves
 		solver_panel.visible = true
 		solver_label.text = "Solvers: " + str(UserData.solvers)
+		gems_label.text = ""
+		gems_value.text = ""
 	board.update_background_texture(UserData.pictures[UserSettings.picture_index][1])
 	title.text = UserData.pictures[UserSettings.picture_index][0]
 	seconds = 0
@@ -82,6 +88,7 @@ func _on_Board_game_won() -> void:
 	anim.play("Complete")
 	if challenge:
 		emit_signal("challenge_completed", board.board_flat, seconds, minutes, moves)
+		gems_value.text = str(UserData.staged_gems)
 	else:
 		print("game won with starting position: ", board.board_flat)
 

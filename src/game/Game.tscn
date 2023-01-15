@@ -217,26 +217,42 @@ margin_right = 340.0
 margin_bottom = 640.0
 rect_min_size = Vector2( 320, 0 )
 
-[node name="Title" type="Label" parent="Complete/Display"]
+[node name="GemGain" type="Label" parent="Complete/Display"]
 margin_right = 320.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 0, 140 )
-text = "The Quick Brown Fox jumps over the Lazy Dog"
+margin_bottom = 47.0
+rect_min_size = Vector2( 0, 47 )
+text = "
+Gems Gained from Daily Challenge"
 align = 1
-valign = 1
+
+[node name="GemsWon" type="Label" parent="Complete/Display"]
+margin_top = 51.0
+margin_right = 320.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 0, 30 )
+text = "0"
+align = 1
+
+[node name="Title" type="Label" parent="Complete/Display"]
+margin_top = 85.0
+margin_right = 320.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 0, 51 )
+align = 1
+valign = 2
 autowrap = true
 
 [node name="Picture" type="TextureRect" parent="Complete/Display"]
-margin_top = 144.0
+margin_top = 140.0
 margin_right = 320.0
-margin_bottom = 464.0
+margin_bottom = 460.0
 rect_min_size = Vector2( 320, 320 )
 expand = true
 
 [node name="Status" type="HBoxContainer" parent="Complete/Display"]
-margin_top = 468.0
+margin_top = 464.0
 margin_right = 320.0
-margin_bottom = 516.0
+margin_bottom = 512.0
 custom_constants/separation = 20
 alignment = 1
 
