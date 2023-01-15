@@ -41,7 +41,11 @@ func set_number_visible(state: bool) -> void:
 	$Label.visible = state
 
 func _on_Tile_pressed() -> void:
-	emit_signal("tile_pressed", number)
+	return
+	#emit_signal("tile_pressed", number)
 
 func _on_Tween_tween_completed(_object, _key) -> void:
 	emit_signal("slide_completed", number)
+
+func _on_Tile_button_up() -> void:
+	emit_signal("tile_pressed", number)

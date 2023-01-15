@@ -6,12 +6,14 @@ onready var about_toggle = $Panel/AboutButton
 onready var about_panel = $Panel/AboutPanel
 onready var privacy_panel = $Panel/AboutPanel/PrivacyPanel
 onready var privacy_button = $Panel/AboutPanel/PrivacyView
+onready var copyright = $Panel/AboutPanel/Copyright
 var ready = false
 
 func _ready() -> void:
 	time_toggle.pressed = UserSettings.hide_times
 	move_toggle.pressed = UserSettings.hide_moves
 	ready = true
+	copyright.text = "v1.0.1 -- January 15, 2023\nCopyright © 2023 Jack Anderson"
 
 func _on_HideTime_toggled(button_pressed: bool) -> void:
 	if ready:

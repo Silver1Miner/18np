@@ -197,6 +197,7 @@ script = ExtResource( 3 )
 margin_top = 60.0
 margin_right = 1800.0
 margin_bottom = 580.0
+mouse_filter = 2
 custom_constants/separation = 0
 
 [node name="Store" parent="Panes" instance=ExtResource( 5 )]
@@ -217,6 +218,7 @@ valign = 1
 [node name="SizeSelect" parent="Panes/Training" instance=ExtResource( 4 )]
 margin_top = -200.0
 margin_bottom = 223.0
+mouse_filter = 2
 
 [node name="Daily" type="Control" parent="Panes"]
 margin_left = 720.0
@@ -267,6 +269,7 @@ margin_top = -160.0
 margin_right = 160.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 320, 320 )
+mouse_filter = 2
 expand = true
 
 [node name="Records" parent="Panes" instance=ExtResource( 10 )]

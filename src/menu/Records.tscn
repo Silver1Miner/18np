@@ -17,6 +17,7 @@ script = ExtResource( 3 )
 margin_top = 320.0
 margin_right = 360.0
 margin_bottom = 520.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Panel"]
 margin_right = 360.0

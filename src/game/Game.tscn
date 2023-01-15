@@ -168,7 +168,7 @@ color = Color( 0, 0, 0, 0.784314 )
 [node name="Label" type="Label" parent="GameView/BoardView/Instructions"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Tap to Start"
+text = "Tap Tiles to Move Them"
 align = 1
 valign = 1
 

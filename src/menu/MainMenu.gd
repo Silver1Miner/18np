@@ -16,6 +16,7 @@ onready var gallery = $Panes/Gallery
 onready var streak_label = $Overlay/Panel/Status/Streak/Label
 onready var gems_label = $Overlay/Panel/Status/Gems/Label
 onready var anim = $Overlay/Panel/AnimationPlayer
+onready var select_bar = $Overlay/SelectBar
 
 func _ready() -> void:
 	check_daily()
@@ -23,6 +24,30 @@ func _ready() -> void:
 	panes.rect_position.x = 2 * -360
 	UserData.check_expired()
 	update_header_display()
+
+var minimum_drag = 100
+var swipe_start = Vector2.ZERO
+func _input(event: InputEvent):
+	if not visible:
+		return
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			swipe_start = event.get_position()
+		else:
+			_calculate_swipe(event.get_position())
+
+func _calculate_swipe(swipe_end: Vector2):
+	if swipe_start == Vector2.ZERO: 
+		return
+	var swipe = swipe_end - swipe_start
+	if abs(swipe.x) > minimum_drag:
+		var choice = 2
+		if swipe.x < 0:
+			choice = select_bar.current_select + 1
+		else:
+			choice = select_bar.current_select - 1
+		if choice >= 0 and choice < 5:
+			select_bar.get_children()[choice].pressed = true
 
 func check_daily() -> void:
 	Daily.check_day()
@@ -45,6 +70,8 @@ func update_header_display() -> void:
 	UserData.save_inventory()
 
 func _on_SelectBar_selected(current_select) -> void:
+	if current_select < 0 or current_select > 4:
+		return
 	if current_select == 0 and store:
 		store.update_buttons()
 	if current_select == 3 and records:
@@ -75,10 +102,12 @@ func _on_SettingsButton_toggled(button_pressed: bool) -> void:
 	Audio.play_sound("res://assets/audio/sounds/switch_004.ogg")
 
 func _on_Gems_pressed() -> void:
-	_on_SelectBar_selected(0)
+	select_bar.get_children()[0].pressed = true
+	#_on_SelectBar_selected(0)
 
 func _on_Streak_pressed() -> void:
-	_on_SelectBar_selected(3)
+	select_bar.get_children()[3].pressed = true
+	#_on_SelectBar_selected(3)
 
 func _on_Gallery_image_changed() -> void:
 	background_preview.texture = UserData.pictures[UserSettings.picture_index][1]
