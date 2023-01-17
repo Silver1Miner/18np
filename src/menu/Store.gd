@@ -122,6 +122,7 @@ func _on_Purchase_pressed() -> void:
 			UserData.add_music()
 	emit_signal("purchase_made")
 	close_confirm()
+	update_buttons()
 
 func _on_Cancel_pressed() -> void:
 	if anim.is_playing():
@@ -140,9 +141,9 @@ func close_confirm() -> void:
 func update_buttons() -> void:
 	button_shield.disabled = UserData.gems < 200 or UserData.streak_shields >= 5
 	button_solver.disabled = UserData.gems < 20 or UserData.solvers >= 99
-	button_picture.disabled = UserData.gems < 160 or len(UserData.owned_pictures) >= 10
+	button_picture.disabled = UserData.gems < 160 or len(UserData.owned_pictures) >= 12
 	button_music.disabled = UserData.gems < 160 or len(UserData.owned_tracks) >= 5
 	owned_shields.text = "(%s/5 Owned)" % str(UserData.streak_shields)
 	owned_solvers.text = "(%s/99 Owned)" % str(UserData.solvers)
-	owned_pics.text = "(%s/10 Unlocked)" % str(len(UserData.owned_pictures))
+	owned_pics.text = "(%s/12 Unlocked)" % str(len(UserData.owned_pictures))
 	owned_music.text = "(%s/5 Unlocked)" % str(len(UserData.owned_tracks))

@@ -24,32 +24,30 @@ var tracks = [
 	["Night Coffee", preload("res://assets/audio/music/night-coffee-shop-114856.mp3")],
 ]
 var pictures = [
-	["Kingfisher", preload("res://assets/gallery/0/kingfisher.jpg")],
-	["Baby Chicken", preload("res://assets/gallery/0/baby chicken.jpg")],
-	["Blue Jay", preload("res://assets/gallery/0/blue jay.jpg")],
-	["Cardinal", preload("res://assets/gallery/0/cardinal.jpg")],
-	["Dove", preload("res://assets/gallery/0/dove.jpg")],
-	["Finch", preload("res://assets/gallery/0/finch.jpg")],
-	["Hummingbird", preload("res://assets/gallery/0/hummingbird.jpg")],
-	["Owls", preload("res://assets/gallery/0/owls.jpg")],
-	["Swan", preload("res://assets/gallery/0/swan.jpg")],
-	["Toucan", preload("res://assets/gallery/0/toucan.jpg")],
+	["Rabbit", preload("res://assets/gallery/zodiac/rabbit.jpg")],
+	["Dragon", preload("res://assets/gallery/zodiac/dragon.jpg")],
+	["Snake", preload("res://assets/gallery/zodiac/snake.jpg")],
+	["Horse", preload("res://assets/gallery/zodiac/horse.jpg")],
+	["Ram", preload("res://assets/gallery/zodiac/ram.jpg")],
+	["Monkey", preload("res://assets/gallery/zodiac/monkey.jpg")],
+	["Rooster", preload("res://assets/gallery/zodiac/rooster.jpg")],
+	["Dog", preload("res://assets/gallery/zodiac/dog.jpg")],
+	["Pig", preload("res://assets/gallery/zodiac/pig.jpg")],
+	["Rat", preload("res://assets/gallery/zodiac/rat.jpg")],
+	["Ox", preload("res://assets/gallery/zodiac/ox.jpg")],
+	["Tiger", preload("res://assets/gallery/zodiac/tiger.jpg")],
 ]
 
 func _ready() -> void:
 	load_inventory()
 
 func add_picture() -> void:
-	var next_pic = owned_tracks.size()
-	if not next_pic in owned_pictures:
-		owned_pictures.append(next_pic)
-		save_inventory()
+	owned_pictures.append(owned_pictures.size())
+	save_inventory()
 
 func add_music() -> void:
-	var next_track = owned_tracks.size()
-	if not next_track in owned_tracks:
-		owned_tracks.append(next_track)
-		save_inventory()
+	owned_tracks.append(owned_tracks.size())
+	save_inventory()
 
 func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
 # warning-ignore:integer_division
@@ -68,7 +66,7 @@ func check_expired() -> void:
 		if streak_shields > 0:
 			streak_shields -= 1
 		else:
-			streak_current = 1
+			streak_current = 0
 	save_inventory()
 
 func change_records_loaded(new_year: int, new_month: int) -> void:
@@ -81,15 +79,7 @@ func change_records_loaded(new_year: int, new_month: int) -> void:
 func save_today(seconds: int, minutes: int, moves: int) -> void:
 	var log_time = OS.get_unix_time()
 	print("seconds since last record log: ", log_time - last_log_time)
-	if last_log_time == 0:
-		streak_current = 1
-	elif log_time - last_log_time > 86400: # seconds in days
-		if streak_shields > 0:
-			streak_shields -= 1
-		else:
-			streak_current = 1
-	else:
-		streak_current += 1
+	streak_current += 1
 	if streak_current > streak_max:
 		streak_max = streak_current
 	last_log_time = log_time

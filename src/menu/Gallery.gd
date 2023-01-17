@@ -11,7 +11,6 @@ var gallery = []
 var current_index = 0
 
 func _ready() -> void:
-	preview.visible = false
 	update_jukebox()
 	update_gallery()
 	update_jukebox_choice()
@@ -29,11 +28,14 @@ func update_jukebox_choice() -> void:
 	_on_JukeboxSelect_item_selected(UserSettings.jukebox_index)
 
 func update_gallery() -> void:
+	preview.visible = false
 	gallery.clear()
 	gallery_select.clear()
 	for pic in UserData.owned_pictures:
 		gallery_select.add_item(UserData.pictures[pic][0])
 		gallery.append(pic)
+	for i in gallery_select.get_item_count():
+		gallery_select.set_item_tooltip_enabled(i, false)
 
 func _on_JukeboxSelect_item_selected(index: int) -> void:
 	print("jukebox select: ", index)
