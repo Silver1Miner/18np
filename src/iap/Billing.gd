@@ -41,7 +41,8 @@ func _on_connected() -> void:
 		["gems_60_99",
 		"gems_315_499",
 		"gems_630_999",
-		"gems_1650_1999"]
+		#"gems_1650_1999",
+		]
 		, "inapp"
 	)
 
@@ -90,9 +91,9 @@ func _on_purchases_updated(items) -> void:
 			if !item.is_acknowledged:
 				print("acknowledging purchases: ", item.purchase_token)
 				android_iap.consumePurchase(item.purchase_token)
-	#if items.size() > 0:
-	#	itemToken = items[items.size()-1].purchase_token
-	#consume_item()
+	if items.size() > 0:
+		itemToken = items[items.size()-1].purchase_token
+	consume_items()
 
 func _on_purchase_acknowledged(token: String) -> void:
 	print("purchase acknowledged with token: ", token)

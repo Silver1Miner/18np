@@ -227,7 +227,7 @@ margin_bottom = 56.0
 margin_right = 280.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
-text = "$1 Tip Jar
+text = "Tip Jar
 Show Thanks
 (+60 Gems)"
 align = 1
@@ -236,15 +236,15 @@ valign = 2
 [node name="BuyTip" type="Button" parent="ScrollContainer/StoreOptions/Support/SupportOptions"]
 margin_top = 84.0
 margin_right = 280.0
-margin_bottom = 124.0
-rect_min_size = Vector2( 280, 40 )
+margin_bottom = 144.0
+rect_min_size = Vector2( 280, 60 )
 text = "TIP JAR - $1.00"
 
 [node name="Gems" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions"]
-margin_top = 128.0
+margin_top = 148.0
 margin_right = 280.0
 margin_bottom = 188.0
-rect_min_size = Vector2( 0, 60 )
+rect_min_size = Vector2( 0, 40 )
 text = "Buy Gems"
 align = 1
 valign = 2
@@ -356,6 +356,5 @@ anims/RESET = SubResource( 2 )
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/BuyTip" to="." method="_on_BuyTip_pressed"]
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems1" to="." method="_on_BuyGems1_pressed"]
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems2" to="." method="_on_BuyGems2_pressed"]
-[connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems3" to="." method="_on_BuyGems3_pressed"]
 [connection signal="pressed" from="Confirm/ConfirmOptions/Purchase" to="." method="_on_Purchase_pressed"]
 [connection signal="pressed" from="Confirm/ConfirmOptions/Cancel" to="." method="_on_Cancel_pressed"]
