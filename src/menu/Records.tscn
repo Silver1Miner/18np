@@ -26,16 +26,30 @@ text = "1900-01-01"
 align = 1
 valign = 1
 
-[node name="Status" type="HBoxContainer" parent="Panel"]
+[node name="Panel" type="Panel" parent="Panel"]
+self_modulate = Color( 0.827451, 0.827451, 0.827451, 1 )
+margin_left = 200.0
 margin_top = 40.0
+margin_right = 320.0
+margin_bottom = 120.0
+
+[node name="Panel2" type="Panel" parent="Panel"]
+self_modulate = Color( 0.827451, 0.827451, 0.827451, 1 )
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 160.0
+margin_bottom = 120.0
+
+[node name="Status" type="HBoxContainer" parent="Panel"]
+margin_top = 50.0
 margin_right = 360.0
-margin_bottom = 88.0
-custom_constants/separation = 20
+margin_bottom = 98.0
+custom_constants/separation = 40
 alignment = 1
 
 [node name="Clock" type="VBoxContainer" parent="Panel/Status"]
-margin_left = 50.0
-margin_right = 170.0
+margin_left = 40.0
+margin_right = 160.0
 margin_bottom = 48.0
 
 [node name="Text" type="Label" parent="Panel/Status/Clock"]
@@ -53,8 +67,8 @@ text = "00:00"
 align = 1
 
 [node name="Moves" type="VBoxContainer" parent="Panel/Status"]
-margin_left = 190.0
-margin_right = 310.0
+margin_left = 200.0
+margin_right = 320.0
 margin_bottom = 48.0
 
 [node name="Text" type="Label" parent="Panel/Status/Moves"]

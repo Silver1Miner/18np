@@ -8,8 +8,8 @@ onready var tween = $Tween
 onready var label = $Label
 onready var symbol = $Icon
 onready var label_font = $Label.get("custom_fonts/font")
-var font_min = 16
-var font_max = 28
+var font_min = 12
+var font_max = 24
 
 func _on_Select_toggled(button_pressed) -> void:
 	if button_pressed:

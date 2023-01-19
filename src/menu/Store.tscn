@@ -78,6 +78,7 @@ mouse_filter = 2
 custom_constants/separation = 20
 
 [node name="Tools" type="Panel" parent="ScrollContainer/StoreOptions"]
+self_modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
 margin_right = 320.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 320, 260 )
@@ -144,6 +145,7 @@ align = 1
 valign = 1
 
 [node name="Unlocks" type="Panel" parent="ScrollContainer/StoreOptions"]
+self_modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
 margin_top = 280.0
 margin_right = 320.0
 margin_bottom = 560.0
@@ -212,6 +214,7 @@ valign = 1
 autowrap = true
 
 [node name="Support" type="Panel" parent="ScrollContainer/StoreOptions"]
+self_modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
 margin_top = 580.0
 margin_right = 320.0
 margin_bottom = 900.0
@@ -305,6 +308,7 @@ align = 1
 valign = 1
 
 [node name="Confirm" type="Panel" parent="."]
+self_modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
 margin_left = 20.0
 margin_top = 640.0
 margin_right = 340.0

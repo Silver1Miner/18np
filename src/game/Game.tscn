@@ -95,42 +95,66 @@ expand = true
 [node name="Status" type="HBoxContainer" parent="GameView/Top/Display"]
 margin_top = 64.0
 margin_right = 360.0
-margin_bottom = 112.0
-custom_constants/separation = 20
+margin_bottom = 124.0
+custom_constants/separation = 40
 alignment = 1
 
-[node name="Clock" type="VBoxContainer" parent="GameView/Top/Display/Status"]
-margin_left = 50.0
-margin_right = 170.0
-margin_bottom = 48.0
+[node name="Panel" type="Panel" parent="GameView/Top/Display/Status"]
+self_modulate = Color( 0.827451, 0.827451, 0.827451, 1 )
+margin_left = 40.0
+margin_right = 160.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 120, 60 )
 
-[node name="Text" type="Label" parent="GameView/Top/Display/Status/Clock"]
+[node name="Clock" type="VBoxContainer" parent="GameView/Top/Display/Status/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -24.0
+margin_right = 60.0
+margin_bottom = 24.0
+
+[node name="Text" type="Label" parent="GameView/Top/Display/Status/Panel/Clock"]
 margin_right = 120.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 120, 0 )
 text = "Time"
 align = 1
 
-[node name="Value" type="Label" parent="GameView/Top/Display/Status/Clock"]
+[node name="Value" type="Label" parent="GameView/Top/Display/Status/Panel/Clock"]
 margin_top = 26.0
 margin_right = 120.0
 margin_bottom = 48.0
 text = "00:00"
 align = 1
 
-[node name="Moves" type="VBoxContainer" parent="GameView/Top/Display/Status"]
-margin_left = 190.0
-margin_right = 310.0
-margin_bottom = 48.0
+[node name="Panel2" type="Panel" parent="GameView/Top/Display/Status"]
+self_modulate = Color( 0.827451, 0.827451, 0.827451, 1 )
+margin_left = 200.0
+margin_right = 320.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 120, 60 )
 
-[node name="Text" type="Label" parent="GameView/Top/Display/Status/Moves"]
+[node name="Moves" type="VBoxContainer" parent="GameView/Top/Display/Status/Panel2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -24.0
+margin_right = 60.0
+margin_bottom = 24.0
+
+[node name="Text" type="Label" parent="GameView/Top/Display/Status/Panel2/Moves"]
 margin_right = 120.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 120, 0 )
 text = "Moves"
 align = 1
 
-[node name="Value" type="Label" parent="GameView/Top/Display/Status/Moves"]
+[node name="Value" type="Label" parent="GameView/Top/Display/Status/Panel2/Moves"]
 margin_top = 26.0
 margin_right = 120.0
 margin_bottom = 48.0
@@ -365,7 +389,7 @@ margin_bottom = 245.0
 rect_min_size = Vector2( 240, 40 )
 text = "RESUME"
 
-[connection signal="pressed" from="GameView/Top/Display/Controls/Back" to="." method="_on_Back_pressed"]
+[connection signal="button_up" from="GameView/Top/Display/Controls/Back" to="." method="_on_Back_button_up"]
 [connection signal="pressed" from="GameView/Top/Display/Controls/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="game_started" from="GameView/BoardView/Board" to="." method="_on_Board_game_started"]
 [connection signal="game_won" from="GameView/BoardView/Board" to="." method="_on_Board_game_won"]

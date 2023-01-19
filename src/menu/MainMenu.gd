@@ -25,7 +25,7 @@ func _ready() -> void:
 	UserData.check_expired()
 	update_header_display()
 
-var minimum_drag = 100
+var minimum_drag = 150
 var swipe_start = Vector2.ZERO
 func _input(event: InputEvent):
 	if not visible:

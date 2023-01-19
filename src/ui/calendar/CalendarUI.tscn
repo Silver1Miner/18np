@@ -7,62 +7,64 @@
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 0.329412, 0.329412, 0.329412, 1 )
 margin_right = 360.0
 margin_bottom = 320.0
 
-[node name="vbox" type="VBoxContainer" parent="PanelContainer"]
-margin_left = 7.0
+[node name="vbox" type="VBoxContainer" parent="Panel"]
+margin_left = 8.0
 margin_top = 7.0
 margin_right = 353.0
 margin_bottom = 313.0
 
-[node name="hbox_month_year" type="HBoxContainer" parent="PanelContainer/vbox"]
-margin_right = 346.0
+[node name="hbox_month_year" type="HBoxContainer" parent="Panel/vbox"]
+margin_right = 345.0
 margin_bottom = 30.0
+custom_constants/separation = 20
 alignment = 1
 
-[node name="button_prev_month" type="Button" parent="PanelContainer/vbox/hbox_month_year"]
-margin_left = 81.0
-margin_right = 100.672
+[node name="button_prev_month" type="Button" parent="Panel/vbox/hbox_month_year"]
+margin_left = 32.0
+margin_right = 59.6721
 margin_bottom = 30.8161
-text = "<"
+text = " < "
 
-[node name="button_prev_year" type="Button" parent="PanelContainer/vbox/hbox_month_year"]
-margin_left = 104.0
-margin_right = 132.672
+[node name="button_prev_year" type="Button" parent="Panel/vbox/hbox_month_year"]
+margin_left = 79.0
+margin_right = 115.672
 margin_bottom = 30.8161
-text = "<<"
+text = " << "
 
-[node name="label_month_year" type="Label" parent="PanelContainer/vbox/hbox_month_year"]
-margin_left = 136.0
+[node name="label_month_year" type="Label" parent="Panel/vbox/hbox_month_year"]
+margin_left = 135.0
 margin_top = 4.0
-margin_right = 210.0
+margin_right = 209.0
 margin_bottom = 26.0
 text = "Jan 2016"
 align = 1
 valign = 1
 
-[node name="button_next_year" type="Button" parent="PanelContainer/vbox/hbox_month_year"]
-margin_left = 214.0
-margin_right = 242.672
-margin_bottom = 30.8161
-text = ">>"
-
-[node name="button_next_month" type="Button" parent="PanelContainer/vbox/hbox_month_year"]
-margin_left = 246.0
+[node name="button_next_year" type="Button" parent="Panel/vbox/hbox_month_year"]
+margin_left = 229.0
 margin_right = 265.672
 margin_bottom = 30.8161
-text = ">"
+text = " >> "
 
-[node name="hbox_label_days" type="GridContainer" parent="PanelContainer/vbox"]
+[node name="button_next_month" type="Button" parent="Panel/vbox/hbox_month_year"]
+margin_left = 285.0
+margin_right = 312.672
+margin_bottom = 30.8161
+text = " > "
+
+[node name="hbox_label_days" type="GridContainer" parent="Panel/vbox"]
 margin_top = 34.0
-margin_right = 346.0
+margin_right = 345.0
 margin_bottom = 64.0
 custom_constants/hseparation = 10
 columns = 7
 
-[node name="label_sunday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
+[node name="label_sunday" type="Label" parent="Panel/vbox/hbox_label_days"]
 margin_right = 40.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 40, 30 )
@@ -70,7 +72,7 @@ text = "Sun"
 align = 1
 valign = 1
 
-[node name="label_monday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
+[node name="label_monday" type="Label" parent="Panel/vbox/hbox_label_days"]
 margin_left = 50.0
 margin_right = 90.0
 margin_bottom = 30.0
@@ -79,7 +81,7 @@ text = "Mon"
 align = 1
 valign = 1
 
-[node name="label_thuesday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
+[node name="label_thuesday" type="Label" parent="Panel/vbox/hbox_label_days"]
 margin_left = 100.0
 margin_right = 140.0
 margin_bottom = 30.0
@@ -88,7 +90,7 @@ text = "Tue"
 align = 1
 valign = 1
 
-[node name="label_wednesday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
+[node name="label_wednesday" type="Label" parent="Panel/vbox/hbox_label_days"]
 margin_left = 150.0
 margin_right = 190.0
 margin_bottom = 30.0
@@ -97,7 +99,7 @@ text = "Wed"
 align = 1
 valign = 1
 
-[node name="label_thursday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
+[node name="label_thursday" type="Label" parent="Panel/vbox/hbox_label_days"]
 margin_left = 200.0
 margin_right = 240.0
 margin_bottom = 30.0
@@ -106,7 +108,7 @@ text = "Thu"
 align = 1
 valign = 1
 
-[node name="label_friday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
+[node name="label_friday" type="Label" parent="Panel/vbox/hbox_label_days"]
 margin_left = 250.0
 margin_right = 290.0
 margin_bottom = 30.0
@@ -115,7 +117,7 @@ text = "Fri"
 align = 1
 valign = 1
 
-[node name="label_saturday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
+[node name="label_saturday" type="Label" parent="Panel/vbox/hbox_label_days"]
 margin_left = 300.0
 margin_right = 340.0
 margin_bottom = 30.0
@@ -124,22 +126,22 @@ text = "Sat"
 align = 1
 valign = 1
 
-[node name="hbox_days" type="GridContainer" parent="PanelContainer/vbox"]
+[node name="hbox_days" type="GridContainer" parent="Panel/vbox"]
 margin_top = 68.0
-margin_right = 346.0
+margin_right = 345.0
 margin_bottom = 295.0
 custom_constants/vseparation = 7
 custom_constants/hseparation = 10
 columns = 7
 
-[node name="btn_0" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_0" type="Button" parent="Panel/vbox/hbox_days"]
 margin_right = 40.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_1" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_1" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 50.0
 margin_right = 90.0
 margin_bottom = 32.0
@@ -147,7 +149,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_2" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_2" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 100.0
 margin_right = 140.0
 margin_bottom = 32.0
@@ -155,7 +157,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_3" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_3" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 150.0
 margin_right = 190.0
 margin_bottom = 32.0
@@ -163,7 +165,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_4" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_4" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 200.0
 margin_right = 240.0
 margin_bottom = 32.0
@@ -171,7 +173,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_5" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_5" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 250.0
 margin_right = 290.0
 margin_bottom = 32.0
@@ -179,7 +181,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_6" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_6" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 300.0
 margin_right = 340.0
 margin_bottom = 32.0
@@ -187,7 +189,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_7" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_7" type="Button" parent="Panel/vbox/hbox_days"]
 margin_top = 39.0
 margin_right = 40.0
 margin_bottom = 71.0
@@ -195,7 +197,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_8" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_8" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 50.0
 margin_top = 39.0
 margin_right = 90.0
@@ -204,7 +206,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_9" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_9" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 100.0
 margin_top = 39.0
 margin_right = 140.0
@@ -213,7 +215,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_10" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_10" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 150.0
 margin_top = 39.0
 margin_right = 190.0
@@ -222,7 +224,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_11" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_11" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 200.0
 margin_top = 39.0
 margin_right = 240.0
@@ -231,7 +233,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_12" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_12" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 250.0
 margin_top = 39.0
 margin_right = 290.0
@@ -240,7 +242,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_13" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_13" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 300.0
 margin_top = 39.0
 margin_right = 340.0
@@ -249,7 +251,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_14" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_14" type="Button" parent="Panel/vbox/hbox_days"]
 margin_top = 78.0
 margin_right = 40.0
 margin_bottom = 110.0
@@ -257,7 +259,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_15" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_15" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 50.0
 margin_top = 78.0
 margin_right = 90.0
@@ -266,7 +268,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_16" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_16" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 100.0
 margin_top = 78.0
 margin_right = 140.0
@@ -275,7 +277,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_17" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_17" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 150.0
 margin_top = 78.0
 margin_right = 190.0
@@ -284,7 +286,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_18" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_18" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 200.0
 margin_top = 78.0
 margin_right = 240.0
@@ -293,7 +295,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_19" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_19" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 250.0
 margin_top = 78.0
 margin_right = 290.0
@@ -302,7 +304,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_20" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_20" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 300.0
 margin_top = 78.0
 margin_right = 340.0
@@ -311,7 +313,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_21" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_21" type="Button" parent="Panel/vbox/hbox_days"]
 margin_top = 117.0
 margin_right = 40.0
 margin_bottom = 149.0
@@ -319,7 +321,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_22" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_22" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 50.0
 margin_top = 117.0
 margin_right = 90.0
@@ -328,7 +330,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_23" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_23" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 100.0
 margin_top = 117.0
 margin_right = 140.0
@@ -337,7 +339,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_24" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_24" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 150.0
 margin_top = 117.0
 margin_right = 190.0
@@ -346,7 +348,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_25" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_25" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 200.0
 margin_top = 117.0
 margin_right = 240.0
@@ -355,7 +357,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_26" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_26" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 250.0
 margin_top = 117.0
 margin_right = 290.0
@@ -364,7 +366,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_27" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_27" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 300.0
 margin_top = 117.0
 margin_right = 340.0
@@ -373,7 +375,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_28" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_28" type="Button" parent="Panel/vbox/hbox_days"]
 margin_top = 156.0
 margin_right = 40.0
 margin_bottom = 188.0
@@ -381,7 +383,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_29" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_29" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 50.0
 margin_top = 156.0
 margin_right = 90.0
@@ -390,7 +392,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_30" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_30" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 100.0
 margin_top = 156.0
 margin_right = 140.0
@@ -399,7 +401,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_31" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_31" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 150.0
 margin_top = 156.0
 margin_right = 190.0
@@ -408,7 +410,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_32" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_32" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 200.0
 margin_top = 156.0
 margin_right = 240.0
@@ -417,7 +419,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_33" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_33" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 250.0
 margin_top = 156.0
 margin_right = 290.0
@@ -426,7 +428,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_34" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_34" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 300.0
 margin_top = 156.0
 margin_right = 340.0
@@ -435,7 +437,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_35" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_35" type="Button" parent="Panel/vbox/hbox_days"]
 margin_top = 195.0
 margin_right = 40.0
 margin_bottom = 227.0
@@ -443,7 +445,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_36" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_36" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 50.0
 margin_top = 195.0
 margin_right = 90.0
@@ -452,7 +454,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_37" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_37" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 100.0
 margin_top = 195.0
 margin_right = 140.0
@@ -461,7 +463,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_38" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_38" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 150.0
 margin_top = 195.0
 margin_right = 190.0
@@ -470,7 +472,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_39" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_39" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 200.0
 margin_top = 195.0
 margin_right = 240.0
@@ -479,7 +481,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_40" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_40" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 250.0
 margin_top = 195.0
 margin_right = 290.0
@@ -488,7 +490,7 @@ rect_min_size = Vector2( 40, 32 )
 disabled = true
 text = "99"
 
-[node name="btn_41" type="Button" parent="PanelContainer/vbox/hbox_days"]
+[node name="btn_41" type="Button" parent="Panel/vbox/hbox_days"]
 margin_left = 300.0
 margin_top = 195.0
 margin_right = 340.0

@@ -6,10 +6,10 @@ onready var title = $Complete/Display/Title
 onready var timer = $Timer
 onready var instructions = $GameView/BoardView/Instructions
 onready var board = $GameView/BoardView/Board
-onready var clock_tab = $GameView/Top/Display/Status/Clock
-onready var moves_tab = $GameView/Top/Display/Status/Moves
-onready var clock_display = $GameView/Top/Display/Status/Clock/Value
-onready var moves_display = $GameView/Top/Display/Status/Moves/Value
+onready var clock_tab = $GameView/Top/Display/Status/Panel#/Clock
+onready var moves_tab = $GameView/Top/Display/Status/Panel2#/Moves
+onready var clock_display = $GameView/Top/Display/Status/Panel/Clock/Value
+onready var moves_display = $GameView/Top/Display/Status/Panel2/Moves/Value
 onready var anim = $AnimationPlayer
 onready var quit_menu = $Quit
 onready var win_clock_display = $Complete/Display/Status/Clock/Value
@@ -116,6 +116,9 @@ func _on_Timer_timeout() -> void:
 	clock_display.text = minute_display + ":" + second_display
 
 func _on_Back_pressed() -> void:
+	pass
+
+func _on_Back_button_up() -> void:
 	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	if seconds > 0:
 		timer.paused = true
@@ -166,3 +169,5 @@ func _on_Quit_pressed() -> void:
 	if solver_panel.visible:
 		solver_button.disabled = true
 	emit_signal("back")
+
+

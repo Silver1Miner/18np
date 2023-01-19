@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/ui/SelectBarButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/gui/theme/buttonSquare_blue_pressed.png" type="Texture" id=2]
 [ext_resource path="res://assets/gui/theme/panel_blue.png" type="Texture" id=3]
 [ext_resource path="res://assets/gui/font/Roboto-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/gui/theme/buttonSquare_grey.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
@@ -11,6 +12,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Select" type="TextureButton"]
+self_modulate = Color( 0.341176, 0.52549, 0.705882, 1 )
 margin_right = 60.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
@@ -18,7 +20,7 @@ toggle_mode = true
 action_mode = 0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
-texture_disabled = ExtResource( 3 )
+texture_disabled = ExtResource( 5 )
 expand = true
 script = ExtResource( 1 )
 

@@ -300,6 +300,17 @@ margin_right = 125.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 125, 40 )
 
+[node name="ColorRect" type="Panel" parent="Overlay/Panel/Status/Streak"]
+self_modulate = Color( 0.862745, 0.862745, 0.862745, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -20.0
+margin_bottom = 20.0
+mouse_filter = 2
+
 [node name="StreakIcon" type="TextureRect" parent="Overlay/Panel/Status/Streak"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -329,6 +340,17 @@ margin_right = 280.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 125, 40 )
 
+[node name="ColorRect2" type="Panel" parent="Overlay/Panel/Status/Gems"]
+self_modulate = Color( 0.862745, 0.862745, 0.862745, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -20.0
+margin_bottom = 20.0
+mouse_filter = 2
+
 [node name="GemIcon" type="TextureRect" parent="Overlay/Panel/Status/Gems"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -349,6 +371,8 @@ valign = 1
 [node name="ColorRect2" type="ColorRect" parent="Overlay/Panel/Status/Gems/Label"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -80.0
+margin_bottom = -40.0
 mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
 

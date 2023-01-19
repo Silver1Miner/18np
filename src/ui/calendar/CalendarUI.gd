@@ -4,17 +4,18 @@ signal date_selected(date_obj)
 const BUTTONS_COUNT = 42
 var calendar := Calendar.new()
 var date := Date.new()
-onready var buttons_container = $PanelContainer/vbox/hbox_days
-onready var month_year_label = $PanelContainer/vbox/hbox_month_year/label_month_year
+onready var buttons_container = $Panel/vbox/hbox_days
+onready var month_year_label = $Panel/vbox/hbox_month_year/label_month_year
 var ready = false
 
 func _ready() -> void:
-	var month_year_path = "PanelContainer/vbox/hbox_month_year/"
+	var month_year_path = "Panel/vbox/hbox_month_year/"
 	if get_node(month_year_path + "button_prev_month").connect("pressed",self,"go_prev_month") != OK: push_error("fail to connect calendar signal")
 	if get_node(month_year_path + "button_next_month").connect("pressed",self,"go_next_month") != OK: push_error("fail to connect calendar signal")
 	if get_node(month_year_path + "button_prev_year").connect("pressed",self,"go_prev_year") != OK: push_error("fail to connect calendar signal")
 	if get_node(month_year_path + "button_next_year").connect("pressed",self,"go_next_year") != OK: push_error("fail to connect calendar signal")
 	setup_button_signals()
+	refresh_data()
 	refresh_data()
 	check_today()
 	ready = true

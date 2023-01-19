@@ -13,7 +13,7 @@ func _ready() -> void:
 	time_toggle.pressed = UserSettings.hide_times
 	move_toggle.pressed = UserSettings.hide_moves
 	ready = true
-	copyright.text = "v1.0.1 -- January 15, 2023\nCopyright © 2023 Jack Anderson"
+	copyright.text = "v1.0.1 -- January 18, 2023\nCopyright © 2023 Jack Anderson"
 
 func _on_HideTime_toggled(button_pressed: bool) -> void:
 	if ready:
@@ -32,3 +32,7 @@ func _on_AboutButton_toggled(button_pressed: bool) -> void:
 
 func _on_PrivacyView_toggled(button_pressed: bool) -> void:
 	privacy_panel.visible = button_pressed
+
+func _on_PrivacyView_pressed() -> void:
+	if OS.shell_open(UserSettings.privacy_policy_link) != OK:
+		push_error("fail to open link")
