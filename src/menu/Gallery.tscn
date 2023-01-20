@@ -13,13 +13,13 @@ script = ExtResource( 2 )
 [node name="Options" type="VBoxContainer" parent="."]
 margin_right = 360.0
 margin_bottom = 520.0
-custom_constants/separation = 0
+custom_constants/separation = 10
 alignment = 1
 
 [node name="Jukebox" type="HBoxContainer" parent="Options"]
-margin_top = 40.0
+margin_top = 45.0
 margin_right = 360.0
-margin_bottom = 80.0
+margin_bottom = 85.0
 custom_constants/separation = 0
 
 [node name="Label" type="Label" parent="Options/Jukebox"]
@@ -36,20 +36,31 @@ margin_right = 360.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 240, 40 )
 
-[node name="Label5" type="Label" parent="Options"]
-margin_top = 80.0
+[node name="Gallery" type="HBoxContainer" parent="Options"]
+margin_top = 95.0
 margin_right = 360.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 40 )
+margin_bottom = 135.0
+custom_constants/separation = 0
+
+[node name="Label5" type="Label" parent="Options/Gallery"]
+margin_right = 120.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 120, 40 )
 text = "GALLERY"
 align = 1
-valign = 2
+valign = 1
+
+[node name="GalleryPage" type="OptionButton" parent="Options/Gallery"]
+margin_left = 120.0
+margin_right = 360.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 240, 40 )
 
 [node name="Pictures" type="ItemList" parent="Options"]
-margin_top = 120.0
+margin_top = 145.0
 margin_right = 360.0
-margin_bottom = 480.0
-rect_min_size = Vector2( 0, 360 )
+margin_bottom = 475.0
+rect_min_size = Vector2( 0, 330 )
 
 [node name="Preview" type="Panel" parent="."]
 visible = false
@@ -80,6 +91,7 @@ rect_min_size = Vector2( 280, 40 )
 text = "Close"
 
 [connection signal="item_selected" from="Options/Jukebox/JukeboxSelect" to="." method="_on_JukeboxSelect_item_selected"]
+[connection signal="item_selected" from="Options/Gallery/GalleryPage" to="." method="_on_GallerySelect_item_selected"]
 [connection signal="item_selected" from="Options/Pictures" to="." method="_on_Pictures_item_selected"]
 [connection signal="pressed" from="Preview/Set" to="." method="_on_Set_pressed"]
 [connection signal="pressed" from="Preview/Close" to="." method="_on_Close_pressed"]

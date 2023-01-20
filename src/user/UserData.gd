@@ -7,8 +7,9 @@ const track_price = 160
 const max_shields = 5
 const max_solvers = 99
 const max_tracks = 5
-const max_pictures = 12
+const max_pictures = 24
 const pic_per_page = 12
+const pages = ["Animals", "Landscapes", "Animals 2"]
 # INVENTORY
 var owned_tracks = 1
 var owned_pictures = 4
@@ -47,6 +48,31 @@ var pictures = [
 	["Dog", preload("res://assets/gallery/zodiac/dog.jpg")],
 	["Pig", preload("res://assets/gallery/zodiac/pig.jpg")],
 	# Landscapes
+	["Antelope", preload("res://assets/gallery/landscape/antelope.jpg")],
+	["Bridge", preload("res://assets/gallery/landscape/bridge.jpg")],
+	["El Capitan", preload("res://assets/gallery/landscape/elcapitan.jpg")],
+	["Moon", preload("res://assets/gallery/landscape/moon.jpg")],
+	["Moraine", preload("res://assets/gallery/landscape/moraine.jpg")],
+	["Oahu", preload("res://assets/gallery/landscape/oahu.jpg")],
+	["Antelope2", preload("res://assets/gallery/landscape/antelope2.jpg")],
+	["Peak", preload("res://assets/gallery/landscape/peaks.jpg")],
+	["River", preload("res://assets/gallery/landscape/river.jpg")],
+	["Tomatlan", preload("res://assets/gallery/landscape/tomatlan.jpg")],
+	["Tree", preload("res://assets/gallery/landscape/tree.jpg")],
+	["Vestrahorn", preload("res://assets/gallery/landscape/vestrahorn.jpg")],
+	# Animals 2
+	["Rat2", preload("res://assets/gallery/zodiac/rat.jpg")],
+	["Ox2", preload("res://assets/gallery/zodiac/ox.jpg")],
+	["Tiger2", preload("res://assets/gallery/zodiac/tiger.jpg")],
+	["Rabbit2", preload("res://assets/gallery/zodiac/rabbit.jpg")],
+	["Dragon2", preload("res://assets/gallery/zodiac/dragon.jpg")],
+	["Snake2", preload("res://assets/gallery/zodiac/snake.jpg")],
+	["Horse2", preload("res://assets/gallery/zodiac/horse.jpg")],
+	["Ram2", preload("res://assets/gallery/zodiac/ram.jpg")],
+	["Monkey2", preload("res://assets/gallery/zodiac/monkey.jpg")],
+	["Rooster2", preload("res://assets/gallery/zodiac/rooster.jpg")],
+	["Dog2", preload("res://assets/gallery/zodiac/dog.jpg")],
+	["Pig2", preload("res://assets/gallery/zodiac/pig.jpg")],
 ]
 
 func _ready() -> void:
