@@ -5,7 +5,7 @@ var hide_moves = false
 var mute_music = false
 var mute_sound = false
 var jukebox_index = 0
-var picture_index = 0
+var picture_index = 3
 var privacy_policy_link = "https://itch.io/t/2578167/privacy-policy"
 
 func _ready() -> void:

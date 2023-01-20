@@ -1,8 +1,17 @@
 extends Node
 
+const shield_price = 200
+const solve_price = 20
+const picture_price = 160
+const track_price = 160
+const max_shields = 5
+const max_solvers = 99
+const max_tracks = 5
+const max_pictures = 12
+const pic_per_page = 12
 # INVENTORY
-var owned_tracks = [0]
-var owned_pictures = [0, 1]
+var owned_tracks = 1
+var owned_pictures = 4
 var streak_current = 0
 var streak_max = 0
 var streak_shields = 0
@@ -24,6 +33,10 @@ var tracks = [
 	["Night Coffee", preload("res://assets/audio/music/night-coffee-shop-114856.mp3")],
 ]
 var pictures = [
+	# Animals
+	["Rat", preload("res://assets/gallery/zodiac/rat.jpg")],
+	["Ox", preload("res://assets/gallery/zodiac/ox.jpg")],
+	["Tiger", preload("res://assets/gallery/zodiac/tiger.jpg")],
 	["Rabbit", preload("res://assets/gallery/zodiac/rabbit.jpg")],
 	["Dragon", preload("res://assets/gallery/zodiac/dragon.jpg")],
 	["Snake", preload("res://assets/gallery/zodiac/snake.jpg")],
@@ -33,20 +46,18 @@ var pictures = [
 	["Rooster", preload("res://assets/gallery/zodiac/rooster.jpg")],
 	["Dog", preload("res://assets/gallery/zodiac/dog.jpg")],
 	["Pig", preload("res://assets/gallery/zodiac/pig.jpg")],
-	["Rat", preload("res://assets/gallery/zodiac/rat.jpg")],
-	["Ox", preload("res://assets/gallery/zodiac/ox.jpg")],
-	["Tiger", preload("res://assets/gallery/zodiac/tiger.jpg")],
+	# Landscapes
 ]
 
 func _ready() -> void:
 	load_inventory()
 
 func add_picture() -> void:
-	owned_pictures.append(owned_pictures.size())
+	owned_pictures += 1
 	save_inventory()
 
 func add_music() -> void:
-	owned_tracks.append(owned_tracks.size())
+	owned_tracks += 1
 	save_inventory()
 
 func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
@@ -128,9 +139,9 @@ func load_inventory() -> void:
 	print(invd)
 	if typeof(invd) == TYPE_DICTIONARY:
 		if invd.has("owned_tracks"):
-			owned_tracks = invd.owned_tracks.duplicate(true)
+			owned_tracks = int(invd.owned_tracks)
 		if invd.has("owned_pictures"):
-			owned_pictures = invd.owned_pictures.duplicate(true)
+			owned_pictures = int(invd.owned_pictures)
 		if invd.has("streak_current"):
 			streak_current = int(invd.streak_current)
 		if invd.has("streak_max"):

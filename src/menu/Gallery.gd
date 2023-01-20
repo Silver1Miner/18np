@@ -9,6 +9,7 @@ onready var set_button = $Preview/Set
 var jukebox = []
 var gallery = []
 var current_index = 0
+var current_page = 0
 
 func _ready() -> void:
 	update_jukebox()
@@ -63,5 +64,4 @@ func _on_Close_pressed() -> void:
 	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	preview.visible = false
 	set_button.disabled = false
-
 

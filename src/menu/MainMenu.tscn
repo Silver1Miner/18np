@@ -245,8 +245,7 @@ margin_top = 180.0
 margin_right = 360.0
 margin_bottom = 380.0
 text = "Daily challenge completed!
-Come back tomorrow
-(or just hard restart the game because persistent saves have not been implemented yet)"
+Come back tomorrow"
 align = 1
 valign = 1
 autowrap = true
@@ -255,7 +254,7 @@ autowrap = true
 margin_top = 60.0
 margin_right = 360.0
 margin_bottom = 100.0
-text = "Toucon"
+text = "Title"
 align = 1
 valign = 2
 

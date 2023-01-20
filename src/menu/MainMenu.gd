@@ -110,8 +110,12 @@ func _on_Streak_pressed() -> void:
 	#_on_SelectBar_selected(3)
 
 func _on_Gallery_image_changed() -> void:
-	background_preview.texture = UserData.pictures[UserSettings.picture_index][1]
-	background_title.text = UserData.pictures[UserSettings.picture_index][0]
+	if UserSettings.picture_index <= UserData.max_pictures:
+		background_preview.texture = UserData.pictures[UserSettings.picture_index][1]
+		background_title.text = UserData.pictures[UserSettings.picture_index][0]
+	else:
+		background_preview.texture = UserData.pictures[3][1]
+		background_title.text = UserData.pictures[3][0]
 
 func _on_Store_purchase_made() -> void:
 	update_header_display()

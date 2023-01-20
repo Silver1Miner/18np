@@ -136,7 +136,7 @@ func _on_Replay_pressed() -> void:
 
 func _on_Restart_pressed() -> void:
 	timer.stop()
-	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	board.reset_board()
 	seconds = 0
 	minutes = 0 

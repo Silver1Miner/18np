@@ -139,11 +139,11 @@ func close_confirm() -> void:
 	update_buttons()
 
 func update_buttons() -> void:
-	button_shield.disabled = UserData.gems < 200 or UserData.streak_shields >= 5
-	button_solver.disabled = UserData.gems < 20 or UserData.solvers >= 99
-	button_picture.disabled = UserData.gems < 160 or len(UserData.owned_pictures) >= 12
-	button_music.disabled = UserData.gems < 160 or len(UserData.owned_tracks) >= 5
-	owned_shields.text = "(%s/5 Owned)" % str(UserData.streak_shields)
-	owned_solvers.text = "(%s/99 Owned)" % str(UserData.solvers)
-	owned_pics.text = "(%s/12 Unlocked)" % str(len(UserData.owned_pictures))
-	owned_music.text = "(%s/5 Unlocked)" % str(len(UserData.owned_tracks))
+	button_shield.disabled = UserData.gems < UserData.shield_price or UserData.streak_shields >= 5
+	button_solver.disabled = UserData.gems < UserData.solve_price or UserData.solvers >= 99
+	button_picture.disabled = UserData.gems < UserData.picture_price or UserData.owned_pictures >= UserData.max_pictures
+	button_music.disabled = UserData.gems < UserData.track_price or UserData.owned_tracks >= UserData.max_tracks
+	owned_shields.text = "(%s/%s Owned)" % [str(UserData.streak_shields), str(UserData.max_shields)]
+	owned_solvers.text = "(%s/%s Owned)" % [str(UserData.solvers), str(UserData.max_solvers)]
+	owned_pics.text = "(%s/%s Unlocked)" % [str(UserData.owned_pictures), str(UserData.max_pictures)]
+	owned_music.text = "(%s/%s Unlocked)" % [str(UserData.owned_tracks), str(UserData.max_tracks)]

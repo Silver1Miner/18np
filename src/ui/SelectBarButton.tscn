@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/gui/theme/buttonSquare_blue_pressed.png" type="Texture" id=2]
 [ext_resource path="res://assets/gui/theme/panel_blue.png" type="Texture" id=3]
 [ext_resource path="res://assets/gui/font/Roboto-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/gui/theme/buttonSquare_grey.png" type="Texture" id=5]
+[ext_resource path="res://assets/gui/theme/grey_panel.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
