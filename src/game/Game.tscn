@@ -64,45 +64,54 @@ rect_min_size = Vector2( 0, 140 )
 [node name="Display" type="VBoxContainer" parent="GameView/Top"]
 margin_right = 40.0
 margin_bottom = 40.0
+custom_constants/separation = 10
 
 [node name="Controls" type="HBoxContainer" parent="GameView/Top/Display"]
 margin_right = 360.0
-margin_bottom = 60.0
+margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_constants/separation = 240
+custom_constants/separation = 260
 alignment = 1
 
-[node name="Back" type="TextureButton" parent="GameView/Top/Display/Controls"]
-margin_right = 60.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 5 )
-texture_disabled = ExtResource( 5 )
+[node name="Back" type="Button" parent="GameView/Top/Display/Controls"]
+self_modulate = Color( 0.843137, 0.843137, 0.843137, 1 )
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="TextureRect" type="TextureRect" parent="GameView/Top/Display/Controls/Back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 5 )
 expand = true
 
-[node name="Restart" type="TextureButton" parent="GameView/Top/Display/Controls"]
-margin_left = 300.0
+[node name="Restart" type="Button" parent="GameView/Top/Display/Controls"]
+self_modulate = Color( 0.843137, 0.843137, 0.843137, 1 )
+margin_left = 310.0
 margin_right = 360.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 6 )
-texture_disabled = ExtResource( 6 )
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="TextureRect" type="TextureRect" parent="GameView/Top/Display/Controls/Restart"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 6 )
 expand = true
 
 [node name="Status" type="HBoxContainer" parent="GameView/Top/Display"]
-margin_top = 64.0
+margin_top = 60.0
 margin_right = 360.0
-margin_bottom = 124.0
-custom_constants/separation = 40
+margin_bottom = 120.0
+custom_constants/separation = 20
 alignment = 1
 
 [node name="Panel" type="Panel" parent="GameView/Top/Display/Status"]
 self_modulate = Color( 0.827451, 0.827451, 0.827451, 1 )
-margin_left = 40.0
-margin_right = 160.0
+margin_left = 50.0
+margin_right = 170.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 120, 60 )
 
@@ -132,8 +141,8 @@ align = 1
 
 [node name="Panel2" type="Panel" parent="GameView/Top/Display/Status"]
 self_modulate = Color( 0.827451, 0.827451, 0.827451, 1 )
-margin_left = 200.0
-margin_right = 320.0
+margin_left = 190.0
+margin_right = 310.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 120, 60 )
 
@@ -323,27 +332,34 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -60.0
-custom_constants/separation = 220
+custom_constants/separation = 240
 alignment = 1
 
-[node name="Replay" type="TextureButton" parent="Complete/Controls"]
-margin_left = 10.0
-margin_right = 70.0
+[node name="Replay" type="Button" parent="Complete/Controls"]
+self_modulate = Color( 0.843137, 0.843137, 0.843137, 1 )
+margin_right = 60.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 6 )
-texture_disabled = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="Complete/Controls/Replay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 6 )
 expand = true
 
-[node name="Home" type="TextureButton" parent="Complete/Controls"]
-margin_left = 290.0
-margin_right = 350.0
+[node name="Home" type="Button" parent="Complete/Controls"]
+self_modulate = Color( 0.843137, 0.843137, 0.843137, 1 )
+margin_left = 300.0
+margin_right = 360.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 8 )
-texture_disabled = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="Complete/Controls/Home"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 8 )
 expand = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

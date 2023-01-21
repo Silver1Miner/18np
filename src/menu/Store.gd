@@ -19,14 +19,14 @@ enum BUY {NONE, SHIELD, SOLVER, PICTURE, MUSIC}
 
 func _ready() -> void:
 	update_buttons()
-	if not OS.get_name() in ["Android", "iOS"]:
+	if not Billing.android_iap or not Billing.ios_iap:
 		support.visible = false
 
 func _on_BuyShield_pressed() -> void:
 	if anim.is_playing():
 		return
 	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
-	cost = 200
+	cost = UserData.shield_price
 	buy_state = BUY.SHIELD
 	anim.play("ConfirmUp")
 
@@ -34,7 +34,7 @@ func _on_BuySolver_pressed() -> void:
 	if anim.is_playing():
 		return
 	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
-	cost = 20
+	cost = UserData.solve_price
 	buy_state = BUY.SOLVER
 	anim.play("ConfirmUp")
 
@@ -42,7 +42,7 @@ func _on_BuyPicture_pressed() -> void:
 	if anim.is_playing():
 		return
 	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
-	cost = 160
+	cost = UserData.picture_price
 	buy_state = BUY.PICTURE
 	anim.play("ConfirmUp")
 
@@ -50,7 +50,7 @@ func _on_BuyMusic_pressed() -> void:
 	if anim.is_playing():
 		return
 	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
-	cost = 160
+	cost = UserData.track_price
 	buy_state = BUY.MUSIC
 	anim.play("ConfirmUp")
 
@@ -143,6 +143,8 @@ func update_buttons() -> void:
 	button_solver.disabled = UserData.gems < UserData.solve_price or UserData.solvers >= 99
 	button_picture.disabled = UserData.gems < UserData.picture_price or UserData.owned_pictures >= UserData.max_pictures
 	button_music.disabled = UserData.gems < UserData.track_price or UserData.owned_tracks >= UserData.max_tracks
+	button_picture.text = str(UserData.picture_price)
+	button_music.text = str(UserData.track_price)
 	owned_shields.text = "(%s/%s Owned)" % [str(UserData.streak_shields), str(UserData.max_shields)]
 	owned_solvers.text = "(%s/%s Owned)" % [str(UserData.solvers), str(UserData.max_solvers)]
 	owned_pics.text = "(%s/%s Unlocked)" % [str(UserData.owned_pictures), str(UserData.max_pictures)]

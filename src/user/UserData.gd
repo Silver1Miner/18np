@@ -2,8 +2,8 @@ extends Node
 
 const shield_price = 200
 const solve_price = 20
-const picture_price = 160
-const track_price = 160
+var picture_price = 160
+var track_price = 160
 const max_shields = 5
 const max_solvers = 99
 const max_tracks = 5
@@ -77,20 +77,25 @@ var pictures = [
 
 func _ready() -> void:
 	load_inventory()
+	update_prices()
 
 func add_picture() -> void:
 	owned_pictures += 1
+	update_prices()
 	save_inventory()
 
 func add_music() -> void:
 	owned_tracks += 1
+	update_prices()
 	save_inventory()
 
+func update_prices() -> void:
+	UserData.picture_price = int(clamp(UserData.owned_pictures * 10, 0, 160))
+	UserData.track_price = int(clamp(UserData.owned_tracks * 100, 0, 160))
+
 func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
-# warning-ignore:integer_division
-	var score_time = int(clamp((180 - (minutes * 60 + seconds))/10, 1, 18))
-# warning-ignore:integer_division
-	var score_move = int(clamp((100 - moves)/10, 1, 18))
+	var score_time = int(clamp( round((180.0 - (minutes * 60 + seconds)) /10), 1, 18))
+	var score_move = int(clamp( round((100.0 - moves) /10), 1, 18))
 	staged_gems = score_time + score_move
 
 func check_expired() -> void:
