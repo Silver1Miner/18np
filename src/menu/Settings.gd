@@ -13,7 +13,7 @@ func _ready() -> void:
 	time_toggle.pressed = UserSettings.hide_times
 	move_toggle.pressed = UserSettings.hide_moves
 	ready = true
-	copyright.text = "v1.0.1 -- January 18, 2023\nCopyright © 2023 Jack Anderson"
+	copyright.text = "v1.0.1 -- January 20, 2023\nCopyright © 2023 Jack Anderson"
 
 func _on_HideTime_toggled(button_pressed: bool) -> void:
 	if ready:
