@@ -1,7 +1,7 @@
 extends Node
 
 signal purchase_ready()
-signal purchase_consumed(fuel)
+signal purchase_consumed(gems)
 var android_iap = null
 var ios_iap = null
 var itemToken

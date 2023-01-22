@@ -12,6 +12,7 @@ onready var clock_display = $GameView/Top/Display/Status/Panel/Clock/Value
 onready var moves_display = $GameView/Top/Display/Status/Panel2/Moves/Value
 onready var anim = $AnimationPlayer
 onready var quit_menu = $Quit
+onready var win_gamemode = $Complete/Display/GameMode
 onready var win_clock_display = $Complete/Display/Status/Clock/Value
 onready var win_moves_display = $Complete/Display/Status/Moves/Value
 onready var win_picture = $Complete/Display/Picture
@@ -64,6 +65,7 @@ func set_challenge(value: bool) -> void:
 
 func reset_game(size: int) -> void:
 	board.update_size(size)
+	win_gamemode.text = str(size) + "x" + str(size)
 
 func _on_Board_game_started() -> void:
 	timer.paused = false

@@ -18,6 +18,8 @@ onready var anim = $Overlay/Panel/AnimationPlayer
 onready var select_bar = $Overlay/SelectBar
 
 func _ready() -> void:
+	if Billing.connect("purchase_consumed", self, "_on_purchase_consumed") != OK:
+		push_error("fail to connect billing signal")
 	check_daily()
 	_on_Gallery_image_changed()
 	panes.rect_position.x = 2 * -360
@@ -125,3 +127,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func _on_ToGallery_pressed() -> void:
 	select_bar.get_children()[4].pressed = true
+
+func _on_purchase_consumed(gem_value: int) -> void:
+	UserData.staged_gems += gem_value
+	anim.play("StreakUpdate")

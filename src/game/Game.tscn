@@ -301,10 +301,19 @@ margin_bottom = 460.0
 rect_min_size = Vector2( 320, 320 )
 expand = true
 
-[node name="Status" type="HBoxContainer" parent="Complete/Display"]
+[node name="GameMode" type="Label" parent="Complete/Display"]
 margin_top = 464.0
 margin_right = 320.0
-margin_bottom = 512.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 0, 40 )
+text = "3x3"
+align = 1
+valign = 1
+
+[node name="Status" type="HBoxContainer" parent="Complete/Display"]
+margin_top = 508.0
+margin_right = 320.0
+margin_bottom = 556.0
 custom_constants/separation = 20
 alignment = 1
 
@@ -426,6 +435,7 @@ rect_min_size = Vector2( 240, 40 )
 text = "RESUME"
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_top = 640.0
 margin_right = 360.0
 margin_bottom = 1280.0
