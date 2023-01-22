@@ -41,7 +41,7 @@ func _on_connected() -> void:
 		["gems_60_99",
 		"gems_315_499",
 		"gems_630_999",
-		#"gems_1650_1999",
+		"gems_1650_1999",
 		]
 		, "inapp"
 	)

@@ -31,51 +31,53 @@ margin_bottom = 440.0
 [node name="AudioSettings" parent="Panel" instance=ExtResource( 2 )]
 margin_left = 80.0
 margin_top = 100.0
-margin_right = 296.0
+margin_right = 298.0
 margin_bottom = 184.0
 
 [node name="TrainSettings" type="VBoxContainer" parent="Panel"]
-margin_left = 20.0
-margin_top = 260.0
-margin_right = 332.0
-margin_bottom = 344.0
+margin_left = 40.0
+margin_top = 220.0
+margin_right = 302.0
+margin_bottom = 304.0
 
 [node name="Time" type="HBoxContainer" parent="Panel/TrainSettings"]
-margin_right = 320.0
+margin_right = 262.0
 margin_bottom = 40.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/TrainSettings/Time"]
-margin_right = 260.0
+margin_right = 200.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 260, 40 )
+rect_min_size = Vector2( 200, 40 )
 text = "Hide Timer in Training"
 align = 1
 valign = 1
 
 [node name="HideTime" type="CheckButton" parent="Panel/TrainSettings/Time"]
-margin_left = 272.0
-margin_right = 320.672
+margin_left = 212.0
+margin_right = 262.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 50, 40 )
 
 [node name="Move" type="HBoxContainer" parent="Panel/TrainSettings"]
 margin_top = 44.0
-margin_right = 320.0
+margin_right = 262.0
 margin_bottom = 84.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="Panel/TrainSettings/Move"]
-margin_right = 260.0
+margin_right = 200.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 260, 40 )
+rect_min_size = Vector2( 200, 40 )
 text = "Hide Moves in Training"
 align = 1
 valign = 1
 
 [node name="HideMove" type="CheckButton" parent="Panel/TrainSettings/Move"]
-margin_left = 272.0
-margin_right = 320.672
+margin_left = 212.0
+margin_right = 262.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 50, 40 )
 
 [node name="Panel" type="Panel" parent="Panel"]
 margin_top = 440.0
@@ -91,6 +93,7 @@ toggle_mode = true
 text = "About"
 
 [node name="AboutPanel" type="Control" parent="Panel"]
+visible = false
 margin_right = 360.0
 margin_bottom = 420.0
 rect_min_size = Vector2( 0, 440 )

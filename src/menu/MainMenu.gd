@@ -7,7 +7,6 @@ onready var panes = $Panes
 onready var settings_button = $Overlay/Panel/SettingsButton
 onready var settings_menu = $Overlay/Panel/Settings
 onready var play_daily_button = $Panes/Daily/PlayDaily
-onready var completed_message = $Panes/Daily/Completed
 onready var background_preview = $Panes/Daily/Preview
 onready var background_title = $Panes/Daily/PreviewTitle
 onready var store = $Panes/Store
@@ -54,11 +53,9 @@ func check_daily() -> void:
 	if Daily.today_challenge_completed:
 		play_daily_button.disabled = true
 		play_daily_button.text = "Today's Challenge Completed!"
-		completed_message.visible = true
 	else:
 		play_daily_button.disabled = false
 		play_daily_button.text = "Play!"
-		completed_message.visible = false
 	if UserData.staged_gems > 0:
 		anim.play("StreakUpdate")
 
@@ -116,6 +113,7 @@ func _on_Gallery_image_changed() -> void:
 	else:
 		background_preview.texture = UserData.pictures[3][1]
 		background_title.text = UserData.pictures[3][0]
+	select_bar.get_children()[2].pressed = true
 
 func _on_Store_purchase_made() -> void:
 	update_header_display()
@@ -124,3 +122,6 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "StreakUpdate":
 		Audio.play_sound("res://assets/audio/sounds/confirmation_004.ogg")
 		update_header_display()
+
+func _on_ToGallery_pressed() -> void:
+	select_bar.get_children()[4].pressed = true

@@ -240,16 +240,6 @@ margin_right = 340.0
 margin_bottom = 490.0
 text = "Play!"
 
-[node name="Completed" type="Label" parent="Panes/Daily"]
-margin_top = 180.0
-margin_right = 360.0
-margin_bottom = 380.0
-text = "Daily challenge completed!
-Come back tomorrow"
-align = 1
-valign = 1
-autowrap = true
-
 [node name="PreviewTitle" type="Label" parent="Panes/Daily"]
 margin_top = 60.0
 margin_right = 360.0
@@ -271,6 +261,10 @@ rect_min_size = Vector2( 320, 320 )
 mouse_filter = 2
 expand = true
 
+[node name="ToGallery" type="TextureButton" parent="Panes/Daily/Preview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="Records" parent="Panes" instance=ExtResource( 10 )]
 margin_left = 1080.0
 margin_right = 1440.0
@@ -280,6 +274,23 @@ margin_left = 1440.0
 margin_right = 1800.0
 
 [node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Overlay"]
+margin_top = 640.0
+margin_right = 360.0
+margin_bottom = 1280.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Overlay"]
+margin_left = 360.0
+margin_right = 1800.0
+margin_bottom = 640.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Overlay"]
+margin_left = -1440.0
+margin_bottom = 640.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="Panel" type="Panel" parent="Overlay"]
 margin_right = 360.0
@@ -405,6 +416,7 @@ texture = ExtResource( 11 )
 [connection signal="purchase_made" from="Panes/Store" to="." method="_on_Store_purchase_made"]
 [connection signal="size_selected" from="Panes/Training/SizeSelect" to="." method="_on_SizeSelect_size_selected"]
 [connection signal="pressed" from="Panes/Daily/PlayDaily" to="." method="_on_PlayDaily_pressed"]
+[connection signal="pressed" from="Panes/Daily/Preview/ToGallery" to="." method="_on_ToGallery_pressed"]
 [connection signal="image_changed" from="Panes/Gallery" to="." method="_on_Gallery_image_changed"]
 [connection signal="pressed" from="Overlay/Panel/Status/Streak" to="." method="_on_Streak_pressed"]
 [connection signal="pressed" from="Overlay/Panel/Status/Gems" to="." method="_on_Gems_pressed"]

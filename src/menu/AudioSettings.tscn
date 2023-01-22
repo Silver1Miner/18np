@@ -14,7 +14,7 @@ theme = ExtResource( 1 )
 script = ExtResource( 6 )
 
 [node name="Sound" type="HBoxContainer" parent="."]
-margin_right = 216.0
+margin_right = 218.0
 margin_bottom = 40.0
 
 [node name="SoundToggle" type="TextureButton" parent="Sound"]
@@ -37,13 +37,14 @@ valign = 1
 
 [node name="SoundToggle2" type="CheckButton" parent="Sound"]
 margin_left = 168.0
-margin_right = 216.672
+margin_right = 218.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 50, 40 )
 pressed = true
 
 [node name="Music" type="HBoxContainer" parent="."]
 margin_top = 44.0
-margin_right = 216.0
+margin_right = 218.0
 margin_bottom = 84.0
 
 [node name="MusicToggle" type="TextureButton" parent="Music"]
@@ -66,8 +67,9 @@ valign = 1
 
 [node name="MusicToggle2" type="CheckButton" parent="Music"]
 margin_left = 168.0
-margin_right = 216.672
+margin_right = 218.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 50, 40 )
 pressed = true
 
 [connection signal="toggled" from="Sound/SoundToggle" to="." method="_on_SoundToggle_toggled"]
