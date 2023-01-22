@@ -360,5 +360,6 @@ anims/RESET = SubResource( 2 )
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/BuyTip" to="." method="_on_BuyTip_pressed"]
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems1" to="." method="_on_BuyGems1_pressed"]
 [connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems2" to="." method="_on_BuyGems2_pressed"]
+[connection signal="pressed" from="ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions/BuyGems3" to="." method="_on_BuyGems3_pressed"]
 [connection signal="pressed" from="Confirm/ConfirmOptions/Purchase" to="." method="_on_Purchase_pressed"]
 [connection signal="pressed" from="Confirm/ConfirmOptions/Cancel" to="." method="_on_Cancel_pressed"]
