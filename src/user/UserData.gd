@@ -101,7 +101,6 @@ func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
 func check_expired() -> void:
 	var log_time = OS.get_unix_time()
 	if last_log_time == 0:
-		streak_current = 0
 		print("no log saved")
 	elif log_time - last_log_time > 86400:
 		print("streak broken")

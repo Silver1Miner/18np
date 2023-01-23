@@ -46,7 +46,7 @@ custom_constants/separation = 0
 margin_right = 120.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
-text = "GALLERY"
+text = "Gallery"
 align = 1
 valign = 1
 

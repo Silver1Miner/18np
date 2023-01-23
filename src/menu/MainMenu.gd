@@ -54,10 +54,10 @@ func check_daily() -> void:
 	Daily.check_day()
 	if Daily.today_challenge_completed:
 		play_daily_button.disabled = true
-		play_daily_button.text = "Today's Challenge Completed!"
+		play_daily_button.text = "Completed!"
 	else:
 		play_daily_button.disabled = false
-		play_daily_button.text = "Play!"
+		play_daily_button.text = "Daily 4x4"
 	if UserData.staged_gems > 0:
 		anim.play("StreakUpdate")
 
@@ -131,3 +131,6 @@ func _on_ToGallery_pressed() -> void:
 func _on_purchase_consumed(gem_value: int) -> void:
 	UserData.staged_gems += gem_value
 	anim.play("StreakUpdate")
+
+func _on_FreePlay_pressed() -> void:
+	select_bar.get_children()[1].pressed = true

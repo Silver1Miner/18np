@@ -60,7 +60,7 @@ script = ExtResource( 2 )
 [node name="Label" type="Label" parent="."]
 margin_right = 360.0
 margin_bottom = 40.0
-text = "STORE"
+text = "Shop"
 align = 1
 valign = 1
 autowrap = true

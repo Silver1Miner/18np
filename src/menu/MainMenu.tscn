@@ -8,7 +8,7 @@
 [ext_resource path="res://src/menu/Gallery.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/gui/buttons/gear.png" type="Texture" id=7]
 [ext_resource path="res://src/menu/Settings.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/gui/buttons/flatLight33.png" type="Texture" id=9]
+[ext_resource path="res://assets/gui/buttons/cross.png" type="Texture" id=9]
 [ext_resource path="res://src/menu/Records.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/gui/icons/tileBlue_10.png" type="Texture" id=11]
 [ext_resource path="res://assets/gui/icons/fire.png" type="Texture" id=12]
@@ -211,7 +211,7 @@ rect_min_size = Vector2( 360, 520 )
 [node name="Label2" type="Label" parent="Panes/Training"]
 margin_right = 360.0
 margin_bottom = 40.0
-text = "TRAINING"
+text = "Free Play"
 align = 1
 valign = 1
 
@@ -229,16 +229,23 @@ rect_min_size = Vector2( 360, 520 )
 [node name="DailyTitle" type="Label" parent="Panes/Daily"]
 margin_right = 360.0
 margin_bottom = 40.0
-text = "DAILY CHALLENGE"
+text = "Daily Challenge"
 align = 1
 valign = 1
 
-[node name="PlayDaily" type="Button" parent="Panes/Daily"]
+[node name="FreePlay" type="Button" parent="Panes/Daily"]
 margin_left = 20.0
+margin_top = 430.0
+margin_right = 160.0
+margin_bottom = 490.0
+text = "Free Play"
+
+[node name="PlayDaily" type="Button" parent="Panes/Daily"]
+margin_left = 200.0
 margin_top = 430.0
 margin_right = 340.0
 margin_bottom = 490.0
-text = "Play!"
+text = "Daily 4x4"
 
 [node name="PreviewTitle" type="Label" parent="Panes/Daily"]
 margin_top = 60.0
@@ -282,6 +289,7 @@ margin_bottom = 1280.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="Overlay"]
+visible = false
 margin_left = 360.0
 margin_right = 1800.0
 margin_bottom = 640.0
@@ -415,6 +423,7 @@ texture = ExtResource( 11 )
 
 [connection signal="purchase_made" from="Panes/Store" to="." method="_on_Store_purchase_made"]
 [connection signal="size_selected" from="Panes/Training/SizeSelect" to="." method="_on_SizeSelect_size_selected"]
+[connection signal="pressed" from="Panes/Daily/FreePlay" to="." method="_on_FreePlay_pressed"]
 [connection signal="pressed" from="Panes/Daily/PlayDaily" to="." method="_on_PlayDaily_pressed"]
 [connection signal="pressed" from="Panes/Daily/Preview/ToGallery" to="." method="_on_ToGallery_pressed"]
 [connection signal="image_changed" from="Panes/Gallery" to="." method="_on_Gallery_image_changed"]
