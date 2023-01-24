@@ -59,25 +59,25 @@ func android_purchase(index: int) -> void:
 		return
 	match index:
 		0:
-			var response = android_iap.purchase("fuel_60_99")
+			var response = android_iap.purchase("gems_60_99")
 			gem_value = 60
 			print("purchase attempted with result: ", response.status)
 			if response.status != OK:
 				print("error purchasing item")
 		1:
-			var response = android_iap.purchase("fuel_315_499")
+			var response = android_iap.purchase("gems_315_499")
 			gem_value = 315
 			print("purchase attempted with result: ", response.status)
 			if response.status != OK:
 				print("error purchasing item")
 		2:
-			var response = android_iap.purchase("fuel_630_999")
+			var response = android_iap.purchase("gems_630_999")
 			gem_value = 630
 			print("purchase attempted with result: ", response.status)
 			if response.status != OK:
 				print("error purchasing item")
 		3:
-			var response = android_iap.purchase("fuel_1650_2499")
+			var response = android_iap.purchase("gems_1650_2499")
 			gem_value = 1650
 			print("purchase attempted with result: ", response.status)
 			if response.status != OK:
@@ -131,25 +131,25 @@ func ios_purchase(index: int) -> void:
 	ios_iap.set_auto_finish_transaction(true)
 	match index:
 		0:
-			var response = ios_iap.purchase("fuel_60_99")
+			var response = ios_iap.purchase("gems_60_99")
 			gem_value = 60
 			print("purchase attempted with result: ", response.status)
 			if response != OK:
 				print("error purchasing item")
 		1:
-			var response = ios_iap.purchase("fuel_315_499")
+			var response = ios_iap.purchase("gems_315_499")
 			gem_value = 315
 			print("purchase attempted with result: ", response.status)
 			if response != OK:
 				print("error purchasing item")
 		2:
-			var response = ios_iap.purchase("fuel_630_999")
+			var response = ios_iap.purchase("gems_630_999")
 			gem_value = 630
 			print("purchase attempted with result: ", response.status)
 			if response != OK:
 				print("error purchasing item")
 		3:
-			var response = ios_iap.purchase("fuel_1650_2499")
+			var response = ios_iap.purchase("gems_1650_2499")
 			gem_value = 1650
 			print("purchase attempted with result: ", response.status)
 			if response != OK:
