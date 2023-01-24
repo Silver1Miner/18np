@@ -77,7 +77,7 @@ func android_purchase(index: int) -> void:
 			if response.status != OK:
 				print("error purchasing item")
 		3:
-			var response = android_iap.purchase("gems_1650_2499")
+			var response = android_iap.purchase("gems_1650_1999")
 			gem_value = 1650
 			print("purchase attempted with result: ", response.status)
 			if response.status != OK:
@@ -117,7 +117,7 @@ func consume_items() -> void:
 		elif purchase.sku == "gems_630_999" and purchase.purchase_state == 1:
 			emit_signal("purchase_consumed", 630)
 			android_iap.consumePurchase(purchase.purchase_token)
-		elif purchase.sku == "gems_1650_2499" and purchase.purchase_state == 1:
+		elif purchase.sku == "gems_1650_1999" and purchase.purchase_state == 1:
 			emit_signal("purchase_consumed", 1650)
 			android_iap.consumePurchase(purchase.purchase_token)
 
@@ -149,7 +149,7 @@ func ios_purchase(index: int) -> void:
 			if response != OK:
 				print("error purchasing item")
 		3:
-			var response = ios_iap.purchase("gems_1650_2499")
+			var response = ios_iap.purchase("gems_1650_1999")
 			gem_value = 1650
 			print("purchase attempted with result: ", response.status)
 			if response != OK:

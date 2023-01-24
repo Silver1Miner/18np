@@ -19,8 +19,8 @@ enum BUY {NONE, SHIELD, SOLVER, PICTURE, MUSIC}
 
 func _ready() -> void:
 	update_buttons()
-	#if not OS.get_name() in ["Android", "iOS"]:
-	#	support.visible = false
+	if not OS.get_name() in ["Android", "iOS"]:
+		support.visible = false
 
 func _on_BuyShield_pressed() -> void:
 	if anim.is_playing():
@@ -59,12 +59,10 @@ func _on_BuyTip_pressed() -> void:
 		return
 	if Billing.android_iap:
 		Billing.android_purchase(0)
-		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 		print("buy 60 gems via android")
 	elif Billing.ios_iap:
 		print("buy 60 gems via ios")
 		Billing.ios_purchase(0)
-		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	else:
 		print("no shop connected")
 
@@ -73,12 +71,10 @@ func _on_BuyGems1_pressed() -> void:
 		return
 	if Billing.android_iap:
 		Billing.android_purchase(1)
-		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 		print("buy 315 gems via android")
 	elif Billing.ios_iap:
 		print("buy 315 gems via ios")
 		Billing.ios_purchase(1)
-		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	else:
 		print("no shop connected")
 
@@ -87,12 +83,10 @@ func _on_BuyGems2_pressed() -> void:
 		return
 	if Billing.android_iap:
 		Billing.android_purchase(2)
-		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 		print("buy 630 gems via android")
 	elif Billing.ios_iap:
 		print("buy 630 gems via ios")
 		Billing.ios_purchase(2)
-		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	else:
 		print("no shop connected")
 
@@ -101,12 +95,10 @@ func _on_BuyGems3_pressed() -> void:
 		return
 	if Billing.android_iap:
 		Billing.android_purchase(3)
-		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 		print("buy 1650 gems via android")
 	elif Billing.ios_iap:
 		print("buy 1650 gems via ios")
 		Billing.ios_purchase(3)
-		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	else:
 		print("no shop connected")
 
