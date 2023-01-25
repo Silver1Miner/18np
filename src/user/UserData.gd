@@ -99,10 +99,10 @@ func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
 	staged_gems = score_time + score_move
 
 func check_expired() -> void:
-	var log_time = OS.get_unix_time()
-	if last_log_time == 0:
-		print("no log saved")
-	elif log_time - last_log_time > 86400:
+	print(OS.get_date())
+	var log_time = OS.get_unix_time_from_datetime(OS.get_date())
+	print(log_time)
+	if log_time - last_log_time > 86441:
 		print("streak broken")
 		if streak_shields > 0:
 			streak_shields -= 1
@@ -118,15 +118,14 @@ func change_records_loaded(new_year: int, new_month: int) -> void:
 	load_from_records(current_year_loaded, current_month_loaded)
 
 func save_today(seconds: int, minutes: int, moves: int) -> void:
-	var log_time = OS.get_unix_time()
-	print("seconds since last record log: ", log_time - last_log_time)
+	var log_time = OS.get_unix_time_from_datetime(OS.get_date())
 	streak_current += 1
 	if streak_current > streak_max:
 		streak_max = streak_current
 	last_log_time = log_time
 	save_inventory()
-	change_records_loaded(OS.get_datetime()["year"], OS.get_datetime()["month"])
-	var day = OS.get_datetime()["day"]
+	change_records_loaded(OS.get_date()["year"], OS.get_date()["month"])
+	var day = OS.get_date()["day"]
 	if current_loaded.has(day):
 		push_error("a record was already saved for this day; overwriting")
 	current_loaded[day] = {
@@ -134,7 +133,7 @@ func save_today(seconds: int, minutes: int, moves: int) -> void:
 		"minutes": minutes,
 		"seconds": seconds
 	}
-	change_records_loaded(OS.get_datetime()["year"], OS.get_datetime()["month"])
+	change_records_loaded(OS.get_date()["year"], OS.get_date()["month"])
 
 func save_inventory() -> void:
 	var save = File.new()
