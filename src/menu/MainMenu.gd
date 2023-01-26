@@ -10,6 +10,7 @@ onready var play_daily_button = $Panes/Daily/PlayDaily
 onready var background_preview = $Panes/Daily/Preview
 onready var background_title = $Panes/Daily/PreviewTitle
 onready var store = $Panes/Store
+onready var daily = $Panes/Daily
 onready var records = $Panes/Records
 onready var gallery = $Panes/Gallery
 onready var streak_label = $Overlay/Panel/Status/Streak/Label
@@ -51,6 +52,7 @@ func _calculate_swipe(swipe_end: Vector2):
 			select_bar.get_children()[choice].pressed = true
 
 func check_daily() -> void:
+	print("check daily")
 	Daily.check_day()
 	if Daily.today_challenge_completed:
 		play_daily_button.disabled = true
@@ -71,9 +73,11 @@ func update_header_display() -> void:
 func _on_SelectBar_selected(current_select) -> void:
 	if current_select < 0 or current_select > 4:
 		return
-	if current_select == 0 and store:
+	elif current_select == 0 and store:
 		store.update_buttons()
-	if current_select == 3 and records:
+	elif current_select == 2 and daily:
+		check_daily()
+	elif current_select == 3 and records:
 		records._on_ToToday_pressed()
 	if settings_button:
 		settings_button.pressed = false
@@ -117,8 +121,10 @@ func _on_Gallery_image_changed() -> void:
 		background_title.text = UserData.pictures[3][0]
 	select_bar.get_children()[2].pressed = true
 
-func _on_Store_purchase_made() -> void:
+func _on_Store_purchase_made(swap: bool) -> void:
 	update_header_display()
+	if swap:
+		select_bar.get_children()[4].pressed = true
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "StreakUpdate":

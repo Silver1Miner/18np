@@ -1,6 +1,6 @@
 extends Control
 
-signal purchase_made()
+signal purchase_made(swap)
 onready var owned_shields = $ScrollContainer/StoreOptions/Tools/ToolOptions/OwnedShields
 onready var button_shield = $ScrollContainer/StoreOptions/Tools/ToolOptions/BuyShield
 onready var owned_solvers = $ScrollContainer/StoreOptions/Tools/ToolOptions/OwnedSolvers
@@ -107,6 +107,7 @@ func _on_Purchase_pressed() -> void:
 		return
 	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	UserData.gems = int(clamp(UserData.gems - cost, 0, UserData.gems))
+	var swap = false
 	match buy_state:
 		BUY.SHIELD:
 			UserData.streak_shields = int(clamp(UserData.streak_shields+1, 0, 5))
@@ -114,9 +115,11 @@ func _on_Purchase_pressed() -> void:
 			UserData.solvers = int(clamp(UserData.solvers+1, 0, 99))
 		BUY.PICTURE:
 			UserData.add_picture()
+			swap = true
 		BUY.MUSIC:
 			UserData.add_music()
-	emit_signal("purchase_made")
+			swap = true
+	emit_signal("purchase_made", swap)
 	close_confirm()
 	update_buttons()
 

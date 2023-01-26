@@ -94,9 +94,9 @@ func update_prices() -> void:
 	UserData.track_price = int(clamp(UserData.owned_tracks * 100, 0, 160))
 
 func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
-	var score_time = int(clamp( round((180.0 - (minutes * 60 + seconds)) /10), 1, 18))
-	var score_move = int(clamp( round((100.0 - moves) /10), 1, 18))
-	staged_gems = score_time + score_move
+	var score_time = int(clamp( round((180.0 - (minutes * 60 + seconds)) /10), 1, 20))
+	var score_move = int(clamp( round((100.0 - moves) /10), 1, 20))
+	staged_gems = (score_time + score_move) * 2
 
 func check_expired() -> void:
 	print(OS.get_date())

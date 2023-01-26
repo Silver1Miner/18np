@@ -12,20 +12,32 @@
 resource_name = "Complete"
 length = 0.3
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Complete:rect_position:y")
+tracks/0/path = NodePath("Complete:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 640, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.3 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Complete:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
 }
 
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Complete:rect_position:x")
+tracks/0/path = NodePath("Complete:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -34,15 +46,17 @@ tracks/0/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("Complete:rect_position:y")
+tracks/1/type = "value"
+tracks/1/path = NodePath("Complete:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 640, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [node name="Game" type="Control"]
@@ -259,9 +273,10 @@ expand = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Complete" type="Panel" parent="."]
-margin_top = 640.0
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 360.0
-margin_bottom = 1280.0
+margin_bottom = 640.0
 
 [node name="Display" type="VBoxContainer" parent="Complete"]
 margin_left = 20.0
@@ -269,51 +284,18 @@ margin_right = 340.0
 margin_bottom = 640.0
 rect_min_size = Vector2( 320, 0 )
 
-[node name="GemGain" type="Label" parent="Complete/Display"]
-margin_right = 320.0
-margin_bottom = 47.0
-rect_min_size = Vector2( 0, 47 )
-text = "
-Gems Gained from Daily Challenge"
-align = 1
-
-[node name="GemsWon" type="Label" parent="Complete/Display"]
-margin_top = 51.0
-margin_right = 320.0
-margin_bottom = 81.0
-rect_min_size = Vector2( 0, 30 )
-text = "0"
-align = 1
-
-[node name="Title" type="Label" parent="Complete/Display"]
-margin_top = 85.0
-margin_right = 320.0
-margin_bottom = 136.0
-rect_min_size = Vector2( 0, 51 )
-align = 1
-valign = 2
-autowrap = true
-
-[node name="Picture" type="TextureRect" parent="Complete/Display"]
-margin_top = 140.0
-margin_right = 320.0
-margin_bottom = 460.0
-rect_min_size = Vector2( 320, 320 )
-expand = true
-
 [node name="GameMode" type="Label" parent="Complete/Display"]
-margin_top = 464.0
 margin_right = 320.0
-margin_bottom = 504.0
-rect_min_size = Vector2( 0, 40 )
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
 text = "3x3"
 align = 1
-valign = 1
+valign = 2
 
 [node name="Status" type="HBoxContainer" parent="Complete/Display"]
-margin_top = 508.0
+margin_top = 64.0
 margin_right = 320.0
-margin_bottom = 556.0
+margin_bottom = 112.0
 custom_constants/separation = 20
 alignment = 1
 
@@ -352,6 +334,39 @@ align = 1
 margin_top = 26.0
 margin_right = 120.0
 margin_bottom = 48.0
+text = "0"
+align = 1
+
+[node name="Title" type="Label" parent="Complete/Display"]
+margin_top = 116.0
+margin_right = 320.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 0, 40 )
+align = 1
+valign = 2
+autowrap = true
+
+[node name="Picture" type="TextureRect" parent="Complete/Display"]
+margin_top = 160.0
+margin_right = 320.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 320, 320 )
+expand = true
+
+[node name="GemGain" type="Label" parent="Complete/Display"]
+margin_top = 484.0
+margin_right = 320.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 0, 60 )
+text = "
+Gems Gained from Daily Challenge"
+align = 1
+
+[node name="GemsWon" type="Label" parent="Complete/Display"]
+margin_top = 548.0
+margin_right = 320.0
+margin_bottom = 578.0
+rect_min_size = Vector2( 0, 30 )
 text = "0"
 align = 1
 
