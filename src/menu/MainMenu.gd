@@ -92,9 +92,11 @@ func _on_SelectBar_selected(current_select) -> void:
 		tween.start()
 
 func _on_SizeSelect_size_selected(size) -> void:
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	emit_signal("to_freeplay", size)
 
 func _on_PlayDaily_pressed() -> void:
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	emit_signal("to_daily_challenge")
 
 func _on_SettingsButton_toggled(button_pressed: bool) -> void:

@@ -289,7 +289,6 @@ margin_bottom = 1280.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="Overlay"]
-visible = false
 margin_left = 360.0
 margin_right = 1800.0
 margin_bottom = 640.0

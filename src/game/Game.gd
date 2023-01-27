@@ -68,6 +68,7 @@ func reset_game(size: int) -> void:
 	win_gamemode.text = str(size) + "x" + str(size)
 
 func _on_Board_game_started() -> void:
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	timer.paused = false
 	instructions.visible = false
 	if solver_panel.visible:
@@ -117,9 +118,6 @@ func _on_Timer_timeout() -> void:
 		second_display = str(int(seconds))
 	clock_display.text = minute_display + ":" + second_display
 
-func _on_Back_pressed() -> void:
-	pass
-
 func _on_Back_button_up() -> void:
 	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
 	if seconds > 0:
@@ -129,16 +127,18 @@ func _on_Back_button_up() -> void:
 		emit_signal("back")
 
 func _on_Home_pressed() -> void:
-	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	emit_signal("back")
 
 func _on_Replay_pressed() -> void:
 	_on_Restart_pressed()
+	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	anim.play_backwards("Complete")
 
 func _on_Restart_pressed() -> void:
+	if not timer.is_stopped():
+		Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	timer.stop()
-	Audio.play_sound("res://assets/audio/sounds/confirmation_001.ogg")
 	board.reset_board()
 	seconds = 0
 	minutes = 0 
@@ -153,6 +153,7 @@ func _on_Cheat_pressed() -> void:
 	if UserData.solvers > 0:
 		UserData.solvers -= 1
 		solver_label.text = "Solvers: " + str(UserData.solvers)
+		UserData.save_inventory()
 
 func _on_Cancel_pressed() -> void:
 	Audio.play_sound("res://assets/audio/sounds/back_002.ogg")
