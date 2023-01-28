@@ -106,7 +106,7 @@ func check_expired() -> bool:
 		return false
 	var streak_broken = false
 	print(log_time)
-	if log_time - last_log_time > 86441:
+	if log_time - last_log_time > 90000:
 		print("streak broken")
 		streak_broken = true
 		if streak_shields > 0:

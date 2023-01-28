@@ -25,9 +25,15 @@ func _ready() -> void:
 	_on_Gallery_image_changed()
 	panes.rect_position.x = 2 * -360
 	update_header_display()
-	#yield(get_tree().create_timer(0.5), "timeout")
 	if UserData.check_expired():
 		anim.play("StreakBreak")
+
+func _notification(what) -> void:
+	if what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
+		print("check on regain focus")
+		check_daily()
+		if UserData.check_expired():
+			anim.play("StreakBreak")
 
 var minimum_drag = 150
 var swipe_start = Vector2.ZERO
