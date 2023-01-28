@@ -24,8 +24,10 @@ func _ready() -> void:
 	check_daily()
 	_on_Gallery_image_changed()
 	panes.rect_position.x = 2 * -360
-	UserData.check_expired()
 	update_header_display()
+	#yield(get_tree().create_timer(0.5), "timeout")
+	if UserData.check_expired():
+		anim.play("StreakBreak")
 
 var minimum_drag = 150
 var swipe_start = Vector2.ZERO
@@ -131,6 +133,9 @@ func _on_Store_purchase_made(swap: bool) -> void:
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "StreakUpdate":
 		Audio.play_sound("res://assets/audio/sounds/confirmation_004.ogg")
+		update_header_display()
+	elif anim_name == "StreakBreak":
+		Audio.play_sound("res://assets/audio/sounds/cardOpenPackage2.ogg")
 		update_header_display()
 
 func _on_ToGallery_pressed() -> void:

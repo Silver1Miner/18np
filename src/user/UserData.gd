@@ -19,6 +19,7 @@ var streak_shields = 0
 var solvers = 5
 var gems = 0
 var last_log_time = 0
+var last_check_time = 0
 # RECORDS
 var current_year_loaded = 0
 var current_month_loaded = 0
@@ -96,19 +97,25 @@ func update_prices() -> void:
 func score_gem_gain(seconds: int, minutes: int, moves: int) -> void:
 	var score_time = int(clamp( round((180.0 - (minutes * 60 + seconds)) /10), 1, 20))
 	var score_move = int(clamp( round((100.0 - moves) /10), 1, 20))
-	staged_gems = (score_time + score_move) * 2
+	staged_gems = (score_time + score_move)
 
-func check_expired() -> void:
+func check_expired() -> bool:
 	print(OS.get_date())
 	var log_time = OS.get_unix_time_from_datetime(OS.get_date())
+	if log_time == last_check_time:
+		return false
+	var streak_broken = false
 	print(log_time)
 	if log_time - last_log_time > 86441:
 		print("streak broken")
+		streak_broken = true
 		if streak_shields > 0:
 			streak_shields -= 1
 		else:
 			streak_current = 0
+	last_check_time = log_time
 	save_inventory()
+	return streak_broken
 
 func change_records_loaded(new_year: int, new_month: int) -> void:
 	if len(current_loaded) > 0:
@@ -152,6 +159,7 @@ func save_inventory() -> void:
 		"gems": gems,
 		"staged_gems": staged_gems,
 		"last_log_time": last_log_time,
+		"last_check_time": last_check_time,
 	}
 	save.store_line(to_json(inv_dict))
 	save.close()
@@ -185,6 +193,8 @@ func load_inventory() -> void:
 			gems = int(invd.gems)
 		if invd.has("last_log_time"):
 			last_log_time = int(invd.last_log_time)
+		if invd.has("last_check_time"):
+			last_check_time = int(invd.last_check_time)
 	save.close()
 
 func save_to_records(year: int, month: int) -> void:
