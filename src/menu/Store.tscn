@@ -241,7 +241,7 @@ margin_top = 84.0
 margin_right = 280.0
 margin_bottom = 144.0
 rect_min_size = Vector2( 280, 60 )
-text = "TIP JAR - $1.00"
+text = "TIP JAR - $0.99"
 
 [node name="Gems" type="Label" parent="ScrollContainer/StoreOptions/Support/SupportOptions"]
 margin_top = 148.0
