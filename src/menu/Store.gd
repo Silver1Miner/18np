@@ -19,8 +19,8 @@ enum BUY {NONE, SHIELD, SOLVER, PICTURE, MUSIC}
 
 func _ready() -> void:
 	update_buttons()
-	if not OS.get_name() in ["Android", "iOS"]:
-		support.visible = false
+	#if not OS.get_name() in ["Android", "iOS"]:
+	#	support.visible = false
 
 func _on_BuyShield_pressed() -> void:
 	if anim.is_playing():
