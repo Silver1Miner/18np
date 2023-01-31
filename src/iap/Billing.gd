@@ -174,3 +174,6 @@ func handle_purchase(product_id) -> void:
 		emit_signal("purchase_consumed", 630)
 	elif product_id == "gems_1650_1999":
 		emit_signal("purchase_consumed", 1650)
+
+func non_mobile_testing(gems: int) -> void:
+	emit_signal("purchase_consumed", gems)

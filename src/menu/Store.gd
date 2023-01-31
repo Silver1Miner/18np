@@ -19,8 +19,8 @@ enum BUY {NONE, SHIELD, SOLVER, PICTURE, MUSIC}
 
 func _ready() -> void:
 	update_buttons()
-	#if not OS.get_name() in ["Android", "iOS"]:
-	#	support.visible = false
+	if not OS.get_name() in ["Android", "iOS"]:
+		support.visible = false
 
 func _on_BuyShield_pressed() -> void:
 	if anim.is_playing():
@@ -65,6 +65,8 @@ func _on_BuyTip_pressed() -> void:
 		Billing.ios_purchase(0)
 	else:
 		print("no shop connected")
+		if not OS.get_name() in ["Android", "iOS"]:
+			Billing.non_mobile_testing(60)
 
 func _on_BuyGems1_pressed() -> void:
 	if anim.is_playing():
@@ -77,6 +79,8 @@ func _on_BuyGems1_pressed() -> void:
 		Billing.ios_purchase(1)
 	else:
 		print("no shop connected")
+		if not OS.get_name() in ["Android", "iOS"]:
+			Billing.non_mobile_testing(315)
 
 func _on_BuyGems2_pressed() -> void:
 	if anim.is_playing():
@@ -89,6 +93,8 @@ func _on_BuyGems2_pressed() -> void:
 		Billing.ios_purchase(2)
 	else:
 		print("no shop connected")
+		if not OS.get_name() in ["Android", "iOS"]:
+			Billing.non_mobile_testing(630)
 
 func _on_BuyGems3_pressed() -> void:
 	if anim.is_playing():
@@ -101,6 +107,8 @@ func _on_BuyGems3_pressed() -> void:
 		Billing.ios_purchase(3)
 	else:
 		print("no shop connected")
+		if not OS.get_name() in ["Android", "iOS"]:
+			Billing.non_mobile_testing(1650)
 
 func _on_Purchase_pressed() -> void:
 	if anim.is_playing():
@@ -142,8 +150,8 @@ func update_buttons() -> void:
 	button_solver.disabled = UserData.gems < UserData.solve_price or UserData.solvers >= 99
 	button_picture.disabled = UserData.gems < UserData.picture_price or UserData.owned_pictures >= UserData.max_pictures
 	button_music.disabled = UserData.gems < UserData.track_price or UserData.owned_tracks >= UserData.max_tracks
-	button_picture.text = str(UserData.picture_price)
-	button_music.text = str(UserData.track_price)
+	button_picture.text = str(UserData.picture_price) + " Gems"
+	button_music.text = str(UserData.track_price) + " Gems"
 	owned_shields.text = "(%s/%s Owned)" % [str(UserData.streak_shields), str(UserData.max_shields)]
 	owned_solvers.text = "(%s/%s Owned)" % [str(UserData.solvers), str(UserData.max_solvers)]
 	owned_pics.text = "(%s/%s Unlocked)" % [str(UserData.owned_pictures), str(UserData.max_pictures)]

@@ -223,9 +223,10 @@ margin_left = 100.0
 margin_top = 390.0
 margin_right = 260.0
 margin_bottom = 430.0
+toggle_mode = true
 text = "Privacy Policy"
 
 [connection signal="toggled" from="Panel/TrainSettings/Time/HideTime" to="." method="_on_HideTime_toggled"]
 [connection signal="toggled" from="Panel/TrainSettings/Move/HideMove" to="." method="_on_HideMove_toggled"]
 [connection signal="toggled" from="Panel/AboutButton" to="." method="_on_AboutButton_toggled"]
-[connection signal="pressed" from="Panel/AboutPanel/PrivacyView" to="." method="_on_PrivacyView_pressed"]
+[connection signal="toggled" from="Panel/AboutPanel/PrivacyView" to="." method="_on_PrivacyView_toggled"]

@@ -140,6 +140,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "StreakUpdate":
 		Audio.play_sound("res://assets/audio/sounds/confirmation_004.ogg")
 		update_header_display()
+		store.update_buttons()
 	elif anim_name == "StreakBreak":
 		Audio.play_sound("res://assets/audio/sounds/cardOpenPackage2.ogg")
 		update_header_display()

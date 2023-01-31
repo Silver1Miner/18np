@@ -296,6 +296,7 @@ valign = 2
 margin_top = 64.0
 margin_right = 320.0
 margin_bottom = 112.0
+rect_min_size = Vector2( 0, 48 )
 custom_constants/separation = 20
 alignment = 1
 

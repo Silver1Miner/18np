@@ -13,6 +13,8 @@ onready var moves_display = $GameView/Top/Display/Status/Panel2/Moves/Value
 onready var anim = $AnimationPlayer
 onready var quit_menu = $Quit
 onready var win_gamemode = $Complete/Display/GameMode
+onready var win_clock = $Complete/Display/Status/Clock
+onready var win_moves = $Complete/Display/Status/Moves
 onready var win_clock_display = $Complete/Display/Status/Clock/Value
 onready var win_moves_display = $Complete/Display/Status/Moves/Value
 onready var win_picture = $Complete/Display/Picture
@@ -49,6 +51,8 @@ func set_challenge(value: bool) -> void:
 	else:
 		clock_tab.visible = !UserSettings.hide_times
 		moves_tab.visible = !UserSettings.hide_moves
+		win_clock.visible = !UserSettings.hide_times
+		win_moves.visible = !UserSettings.hide_moves
 		solver_panel.visible = true
 		solver_label.text = "Solvers: " + str(UserData.solvers)
 		gems_label.text = ""
