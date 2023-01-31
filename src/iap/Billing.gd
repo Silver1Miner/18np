@@ -133,32 +133,35 @@ func ios_purchase(index: int) -> void:
 		0:
 			var response = ios_iap.purchase({"product_id": "gems_60_99"})
 			gem_value = 60
-			print("purchase attempted with result: ", response.status)
+			print("purchase attempted with result: ", response)
 			if response != OK:
 				print("error purchasing item")
 		1:
 			var response = ios_iap.purchase({"product_id": "gems_315_499"})
 			gem_value = 315
-			print("purchase attempted with result: ", response.status)
+			print("purchase attempted with result: ", response)
 			if response != OK:
 				print("error purchasing item")
 		2:
 			var response = ios_iap.purchase({"product_id": "gems_630_999"})
 			gem_value = 630
-			print("purchase attempted with result: ", response.status)
+			print("purchase attempted with result: ", response)
 			if response != OK:
 				print("error purchasing item")
 		3:
 			var response = ios_iap.purchase({"product_id": "gems_1650_1999"})
 			gem_value = 1650
-			print("purchase attempted with result: ", response.status)
+			print("purchase attempted with result: ", response)
 			if response != OK:
 				print("error purchasing item")
+	print("starting search timer")
 	ios_timer.start(1)
 
 func _on_Timer_timeout() -> void:
+	print("searching for event")
 	while ios_iap.get_pending_event_count() > 0:
 		var event = ios_iap.pop_pending_event()
+		print(event)
 		if event.type == "purchase":
 			if event.result == "ok":
 				handle_purchase(event.product_id)
