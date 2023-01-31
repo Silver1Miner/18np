@@ -29,6 +29,7 @@ func _ready() -> void:
 	# iOS
 	if Engine.has_singleton("InAppStore"):
 		ios_iap = Engine.get_singleton("InAppStore")
+		get_ios_iap_details()
 	else:
 		print("iOS IAP plugin not available on this platform")
 
@@ -180,3 +181,14 @@ func handle_purchase(product_id) -> void:
 
 func non_mobile_testing(gems: int) -> void:
 	emit_signal("purchase_consumed", gems)
+
+func get_ios_iap_details() -> void:
+	var event = ios_iap.request_product_info(
+		 { "product_ids":
+			 ["gems_60_99",
+			"gems_315_499",
+			"gems_630_999",
+			"gems_1650_1999",
+			]
+		})
+	print(event)
