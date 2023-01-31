@@ -21,6 +21,9 @@ func _ready() -> void:
 	update_buttons()
 	if not OS.get_name() in ["Android", "iOS"]:
 		support.visible = false
+	if OS.get_name() == "iOS":
+		$ScrollContainer/StoreOptions/Support/SupportOptions/Gems.visible = false
+		$ScrollContainer/StoreOptions/Support/SupportOptions/GemOptions.visible = false
 
 func _on_BuyShield_pressed() -> void:
 	if anim.is_playing():

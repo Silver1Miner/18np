@@ -166,6 +166,7 @@ func _on_Timer_timeout() -> void:
 		if event.type == "purchase":
 			if event.result == "ok":
 				handle_purchase(event.product_id)
+				ios_timer.stop()
 			else:
 				print("error handling purchase")
 
