@@ -21,6 +21,7 @@ data_*/
 # large assets
 data/
 android/
+ios/
 assets/
 exports/
 addons/
